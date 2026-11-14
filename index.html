@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bộ mẫu chung – Trường Tiếng Việt Của Em</title>
+  <meta name="description" content="Bộ mẫu chung phong cách Làng Trâu Con cho các trang của Trường Tiếng Việt Của Em (CVCEC).">
+  <link rel="icon" href="assets/trau-wave.png">
+  <link rel="stylesheet" href="v1/cvcec-chung.css">
+  <script src="v1/cvcec-chung.js" defer></script>
+  <style>
+    /* Bố cục riêng của trang xem thử – màu và phông chỉ dùng biến --ttv-* */
+    body { margin: 0; background: var(--ttv-nen); font-family: var(--ttv-phong); color: var(--ttv-chu); }
+    .khung { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+    .man-chao { padding-top: 36px; }
+    .chao { display: flex; align-items: flex-end; gap: 16px; margin-bottom: 28px; }
+    .chao img { width: 150px; height: auto; flex: 0 0 auto; }
+    .chao .ttv-bong-thoai { max-width: 560px; margin-bottom: 40px; }
+    .luoi-goc { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+    .muc { padding: 40px 0 8px; }
+    .muc h2 { font-size: 2rem; }
+    .muc > .khung > p { color: var(--ttv-chu-phu); max-width: 720px; }
+    .luoi-mau { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .o-mau { padding: 0; overflow: hidden; border-bottom-width: 2px; }
+    .o-mau .mau { height: 64px; border-bottom: 2px solid var(--ttv-vien); }
+    .o-mau .ten { padding: 8px 12px 10px; font-size: .85rem; line-height: 1.35; }
+    .o-mau code { font-weight: 700; }
+    .bang-cuon { overflow-x: auto; }
+    table.tuong-phan { width: 100%; border-collapse: separate; border-spacing: 0 6px; font-size: .95rem; min-width: 560px; }
+    .tuong-phan th { text-align: left; font-family: var(--ttv-phong-tieu-de); padding: 4px 10px; }
+    .tuong-phan td { padding: 6px 10px; vertical-align: middle; }
+    .mau-thu { display: inline-flex; align-items: center; min-height: 40px; padding: 4px 14px; border-radius: 12px; border: 2px solid var(--ttv-vien); font-weight: 800; }
+    .ti-le { font-family: var(--ttv-phong-tieu-de); font-weight: 800; font-size: 1.1rem; }
+    .dat { font-weight: 800; padding: 2px 10px; border-radius: 999px; font-size: .85rem; white-space: nowrap; }
+    .dat.aa { color: var(--ttv-dung); background: var(--ttv-dung-nen); }
+    .dat.lon { color: var(--ttv-chu); background: var(--ttv-kem-rom); }
+    .dat.khong { color: var(--ttv-sai); background: var(--ttv-sai-nen); }
+    .luoi-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .phong-mau p { margin: .2em 0; }
+    .phong-mau .nhan { color: var(--ttv-chu-phu); font-size: .85rem; font-weight: 700; }
+    .hang { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 10px 0; }
+    .mau-don-gian { margin-top: 40px; padding: 40px 0; border-top: 2px solid var(--ttv-vien); }
+    .mau-don-gian .ttv-the { max-width: 640px; margin: 0 auto; }
+    code { font-size: .9em; }
+    @media (max-width: 600px) {
+      .chao { flex-direction: column; align-items: flex-start; }
+      .chao img { width: 110px; }
+      .chao .ttv-bong-thoai { margin-bottom: 0; font-size: 1.1rem; }
+      .chao .ttv-bong-thoai::after { left: 28px; top: -12px; bottom: auto; transform: rotate(135deg); }
+      .muc h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Màn chào -->
+  <section class="ttv-canh man-chao" aria-labelledby="tieu-de-chao">
+    <div class="khung">
+      <div class="chao">
+        <img src="assets/trau-wave.png" alt="Trâu Con vẫy tay" width="297" height="342">
+        <p class="ttv-bong-thoai" id="tieu-de-chao">Chào các bạn! Mình là Trâu Con. Hôm nay các bạn muốn học gì nào?</p>
+      </div>
+      <div class="luoi-goc" id="luoi-goc" aria-label="Các góc học"></div>
+    </div>
+  </section>
+
+  <!-- 2. Bảng màu -->
+  <section class="muc">
+    <div class="khung">
+      <h2 class="ttv-tieu-de">Bảng màu</h2>
+      <p>Màu đặt theo vai trò. Chữ trắng chỉ đặt trên đỏ son, xanh mực, đỏ lá phong và màu đậm của góc học. Màu gốc và màu nhạt của góc học chỉ làm dải màu, nền thẻ, biểu tượng.</p>
+      <div class="luoi-mau" id="luoi-mau"></div>
+
+      <h3 class="ttv-tieu-de" style="margin-top:28px">Tỉ lệ tương phản chữ – nền</h3>
+      <p>Tính trực tiếp từ biến CSS. Mức AA: từ 4.5 với chữ thường, từ 3 với chữ lớn (từ 24px, hoặc 19px đậm).</p>
+      <div class="bang-cuon">
+        <table class="tuong-phan">
+          <thead><tr><th>Mẫu</th><th>Chữ / Nền</th><th>Tỉ lệ</th><th>Mức</th></tr></thead>
+          <tbody id="bang-tuong-phan"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Phông chữ -->
+  <section class="muc">
+    <div class="khung">
+      <h2 class="ttv-tieu-de">Phông chữ</h2>
+      <div class="luoi-2">
+        <div class="ttv-the phong-mau">
+          <p class="nhan">Tiêu đề – Baloo 2 · <code>--ttv-phong-tieu-de</code></p>
+          <p style="font-family:var(--ttv-phong-tieu-de);font-weight:800;font-size:2rem;line-height:1.2">Làng Trâu Con</p>
+          <p style="font-family:var(--ttv-phong-tieu-de);font-weight:600;font-size:1.2rem">Ăn quả nhớ kẻ trồng cây</p>
+        </div>
+        <div class="ttv-the phong-mau">
+          <p class="nhan">Nội dung – Nunito · <code>--ttv-phong</code></p>
+          <p style="font-size:1.1rem">Các bạn chạm vào tranh để nghe Trâu Con đọc, rồi chọn chữ đúng nhé.</p>
+          <p style="font-weight:800">Chữ đậm: Đi một ngày đàng, học một sàng khôn.</p>
+        </div>
+        <div class="ttv-the phong-mau">
+          <p class="nhan">Tập đọc – Andika · <code>--ttv-phong-tap-doc</code></p>
+          <p class="ttv-chu-tap-doc">a ă â b c d đ<br>Bé đi học. Mẹ ru bé ngủ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Nút, nhãn, sao -->
+  <section class="muc">
+    <div class="khung">
+      <h2 class="ttv-tieu-de">Nút, nhãn phản hồi, sao thưởng</h2>
+      <div class="ttv-the">
+        <div class="hang">
+          <button class="ttv-nut" type="button">Bắt đầu chơi</button>
+          <button class="ttv-nut-phu" type="button">Nghe lại</button>
+          <a class="ttv-nut" href="#luoi-goc">Về màn chào</a>
+        </div>
+        <div class="hang">
+          <span class="ttv-nhan-dung">Đúng rồi!</span>
+          <span class="ttv-nhan-sai">Thử lại nhé</span>
+          <span class="ttv-huy-hieu">Mới</span>
+        </div>
+        <div class="hang" role="img" aria-label="Được 3 sao thưởng">
+          <span class="ttv-sao"></span><span class="ttv-sao"></span><span class="ttv-sao"></span>
+        </div>
+        <div class="hang" role="img" aria-label="Được 1 trên 3 sao">
+          <span class="ttv-sao"></span><span class="ttv-sao ttv-sao-tat"></span><span class="ttv-sao ttv-sao-tat"></span>
+        </div>
+        <p style="color:var(--ttv-chu-phu);margin:12px 0 0;font-size:.9rem">Lớp: <code>.ttv-nut</code>, <code>.ttv-nut-phu</code>, <code>.ttv-nhan-dung</code>, <code>.ttv-nhan-sai</code>, <code>.ttv-huy-hieu</code>, <code>.ttv-sao</code>, <code>.ttv-sao-tat</code>. Dùng phím Tab để xem viền focus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Nền đơn giản cho màn đọc / màn chơi -->
+  <section class="mau-don-gian" data-ttv-nen="don-gian">
+    <div class="khung">
+      <h2 class="ttv-tieu-de" style="text-align:center">Màn đọc – <code>data-ttv-nen="don-gian"</code></h2>
+      <div class="ttv-the">
+        <p class="ttv-chu-tap-doc" style="margin:0 0 16px">Con trâu là đầu cơ nghiệp.<br>Trâu Con ra đồng, thấy lúa xanh, thấy trời trong.</p>
+        <div class="hang">
+          <button class="ttv-nut" type="button">Đọc tiếp</button>
+          <button class="ttv-nut-phu" type="button">Nghe lại</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.TTV) return;
+
+      // Thẻ góc học – dựng từ TTV_DANH_SACH (nguồn duy nhất)
+      var luoi = document.getElementById("luoi-goc");
+      function veThe() {
+        luoi.textContent = "";
+        TTV.danhSach.forEach(function (muc) { luoi.appendChild(TTV.taoTheGoc(muc, TTV.ngonNgu())); });
+      }
+      veThe();
+      document.addEventListener("ttv-ngon-ngu", veThe);
+
+      // Đọc giá trị biến
+      var css = getComputedStyle(document.documentElement);
+      function bien(ten) { return css.getPropertyValue(ten).trim(); }
+
+      var MAU = [
+        ["--ttv-chu", "Chữ, tiêu đề"], ["--ttv-chu-phu", "Chữ phụ (xám Trâu)"], ["--ttv-chinh", "Nút chính (đỏ son)"],
+        ["--ttv-chinh-dam", "Viền nút chính"], ["--ttv-la-phong", "Trái tim, huy hiệu"], ["--ttv-sao", "Sao thưởng"],
+        ["--ttv-nen", "Nền màn đọc, màn chơi"], ["--ttv-troi", "Trời màn chào"], ["--ttv-lua-sang", "Ruộng – lớp sau"],
+        ["--ttv-lua", "Ruộng – lớp giữa"], ["--ttv-lua-dam", "Ruộng – lớp trước"], ["--ttv-kem-rom", "Kem rơm"],
+        ["--ttv-the", "Nền thẻ"], ["--ttv-vien", "Viền thẻ"], ["--ttv-dung", "Đúng rồi"], ["--ttv-dung-nen", "Nền Đúng rồi"],
+        ["--ttv-sai", "Thử lại"], ["--ttv-sai-nen", "Nền Thử lại"]
+      ];
+      var luoiMau = document.getElementById("luoi-mau");
+      MAU.forEach(function (m) {
+        var o = document.createElement("div");
+        o.className = "ttv-the o-mau";
+        o.innerHTML = '<div class="mau"></div><div class="ten"><code></code><br><span></span><br><span class="hex"></span></div>';
+        o.querySelector(".mau").style.background = "var(" + m[0] + ")";
+        o.querySelector("code").textContent = m[0];
+        o.querySelector("span").textContent = m[1];
+        o.querySelector(".hex").textContent = bien(m[0]);
+        luoiMau.appendChild(o);
+      });
+
+      // Tương phản WCAG
+      function doSang(hex) {
+        hex = hex.replace("#", "");
+        if (hex.length === 3) hex = hex.replace(/(.)/g, "$1$1");
+        return [0, 2, 4].map(function (i) {
+          var c = parseInt(hex.substr(i, 2), 16) / 255;
+          return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+        }).reduce(function (s, c, i) { return s + c * [0.2126, 0.7152, 0.0722][i]; }, 0);
+      }
+      function tiLe(a, b) {
+        var x = doSang(a), y = doSang(b);
+        return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+      }
+
+      var TRANG = "#FFFFFF";
+      var CAP = [
+        [bien("--ttv-chu"), bien("--ttv-nen"), "Xanh mực / kem giấy"],
+        [bien("--ttv-chu"), bien("--ttv-the"), "Xanh mực / thẻ trắng"],
+        [bien("--ttv-chu"), bien("--ttv-troi"), "Xanh mực / trời"],
+        [bien("--ttv-chu"), bien("--ttv-lua-sang"), "Xanh mực / lúa sáng"],
+        [bien("--ttv-chu"), bien("--ttv-sao"), "Xanh mực / vàng nón lá"],
+        [bien("--ttv-chu"), bien("--ttv-kem-rom"), "Xanh mực / kem rơm"],
+        [bien("--ttv-chu-phu"), bien("--ttv-the"), "Xám Trâu / thẻ trắng"],
+        [bien("--ttv-chu-phu"), bien("--ttv-nen"), "Xám Trâu / kem giấy"],
+        [bien("--ttv-chu-mo"), bien("--ttv-nen"), "Bản quyền / kem giấy"],
+        [TRANG, bien("--ttv-chinh"), "Trắng / đỏ son"],
+        [TRANG, bien("--ttv-chinh-dam"), "Trắng / đỏ son đậm"],
+        [TRANG, bien("--ttv-chu"), "Trắng / xanh mực"],
+        [TRANG, bien("--ttv-la-phong"), "Trắng / đỏ lá phong"],
+        [bien("--ttv-dung"), bien("--ttv-dung-nen"), "Đúng rồi!"],
+        [bien("--ttv-sai"), bien("--ttv-sai-nen"), "Thử lại nhé"]
+      ];
+      TTV.danhSach.forEach(function (m) {
+        CAP.push([TRANG, m.mau_dam, "Trắng / " + m.ngan_vi + " đậm"]);
+        CAP.push([m.mau_dam, m.mau_nhat, m.ngan_vi + " đậm / nhạt (tab đang chọn)"]);
+        CAP.push([bien("--ttv-chu"), m.mau_nhat, "Xanh mực / " + m.ngan_vi + " nhạt"]);
+        CAP.push([bien("--ttv-chu"), m.mau, "Xanh mực / " + m.ngan_vi + " gốc (chỉ chữ lớn, biểu tượng)"]);
+      });
+
+      var bang = document.getElementById("bang-tuong-phan");
+      CAP.forEach(function (c) {
+        var r = tiLe(c[0], c[1]);
+        var tr = document.createElement("tr");
+        var muc = r >= 4.5 ? ["aa", "AA"] : r >= 3 ? ["lon", "AA chữ lớn"] : ["khong", "Không đạt"];
+        tr.innerHTML = '<td><span class="mau-thu">Aa Ơi</span></td><td></td><td class="ti-le"></td><td><span class="dat"></span></td>';
+        var mt = tr.querySelector(".mau-thu");
+        mt.style.color = c[0]; mt.style.background = c[1];
+        tr.children[1].innerHTML = "<strong></strong><br><code></code>";
+        tr.children[1].querySelector("strong").textContent = c[2];
+        tr.children[1].querySelector("code").textContent = c[0] + " / " + c[1];
+        tr.querySelector(".ti-le").textContent = r.toFixed(2) + " : 1";
+        var d = tr.querySelector(".dat");
+        d.className = "dat " + muc[0]; d.textContent = muc[1];
+        bang.appendChild(tr);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+/*!
+ * Bộ mẫu chung "Làng Trâu Con" – Trường Tiếng Việt Của Em (CVCEC)
+ * Phiên bản v1 – https://mau.cvcec.org/v1/cvcec-chung.css
+ * v1 chỉ được sửa theo hướng KHÔNG làm vỡ trang đang dùng; thay đổi lớn thì tạo v2.
+ *
+ * Quy tắc tương phản:
+ *   Chữ trắng CHỈ đặt trên --ttv-chinh (đỏ son), --ttv-chu (xanh mực),
+ *   --ttv-la-phong (đỏ lá phong) và màu ĐẬM của góc học.
+ *   Màu gốc và màu nhạt của góc học chỉ làm dải màu, nền thẻ, biểu tượng;
+ *   chữ trên đó dùng --ttv-chu.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap");
+
+:root {
+  /* Chữ */
+  --ttv-chu: #003060;          /* xanh mực: chữ, tiêu đề */
+  --ttv-chu-phu: #4F5761;      /* xám Trâu */
+  --ttv-chu-mo: #5F6670;       /* dòng bản quyền */
+
+  /* Hành động */
+  --ttv-chinh: #C83818;        /* đỏ son: nút chính, chữ trắng */
+  --ttv-chinh-dam: #8E2810;
+  --ttv-la-phong: #C8181C;     /* trái tim, huy hiệu nhỏ */
+  --ttv-sao: #F0B050;          /* vàng nón lá: sao thưởng */
+
+  /* Nền */
+  --ttv-nen: #FFF8EC;          /* kem giấy: màn đọc, màn chơi */
+  --ttv-troi: #BDE5F8;         /* màn chào */
+  --ttv-may: #FFFFFF;
+  --ttv-mat-troi: #FCE6A4;     /* mặt trời vàng nhạt */
+  --ttv-lua-sang: #A9D86E;
+  --ttv-lua: #8CC63F;
+  --ttv-lua-dam: #6FAE35;
+  --ttv-kem-rom: #F8E3B0;
+  --ttv-the: #FFFFFF;
+  --ttv-vien: #F3E9D6;
+
+  /* Phản hồi */
+  --ttv-dung: #3B7A1F;
+  --ttv-dung-nen: #E6F5DC;
+  --ttv-sai: #B5461A;
+  --ttv-sai-nen: #FDE8DC;
+
+  /* Hình khối */
+  --ttv-bo-goc: 24px;
+  --ttv-bo-nut: 999px;
+  --ttv-cham-toi-thieu: 44px;
+
+  /* Phông */
+  --ttv-phong: "Nunito", system-ui, sans-serif;
+  --ttv-phong-tieu-de: "Baloo 2", "Nunito", sans-serif;
+  --ttv-phong-tap-doc: "Andika", "Nunito", sans-serif;
+
+  /* Màu góc học hiện tại – cvcec-chung.js gán từ TTV_DANH_SACH.
+     Giá trị mặc định dưới đây chỉ là màu trung tính dự phòng. */
+  --ttv-goc: var(--ttv-vien);
+  --ttv-goc-dam: var(--ttv-chu);
+  --ttv-goc-nhat: var(--ttv-nen);
+}
+
+/* ---------- Trang dùng phong cách chung (tuỳ chọn) ---------- */
+.ttv-trang,
+[data-ttv-nen="don-gian"] {
+  font-family: var(--ttv-phong);
+  color: var(--ttv-chu);
+}
+.ttv-trang { background: var(--ttv-troi); }
+[data-ttv-nen="don-gian"] { background: var(--ttv-nen); }
+body[data-ttv-nen="don-gian"] .ttv-canh,
+body[data-ttv-nen="don-gian"] .ttv-canh-trang-tri { background: var(--ttv-nen); }
+body[data-ttv-nen="don-gian"] .ttv-canh-trang-tri { display: none; }
+
+.ttv-tieu-de {
+  font-family: var(--ttv-phong-tieu-de);
+  font-weight: 800;
+  color: var(--ttv-chu);
+  line-height: 1.15;
+  margin: 0 0 .4em;
+}
+.ttv-chu-tap-doc {
+  font-family: var(--ttv-phong-tap-doc);
+  color: var(--ttv-chu);
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+/* ---------- Thẻ ---------- */
+.ttv-the {
+  box-sizing: border-box;
+  background: var(--ttv-the);
+  color: var(--ttv-chu);
+  border: 2px solid var(--ttv-vien);
+  border-bottom: 6px solid var(--ttv-goc);
+  border-radius: var(--ttv-bo-goc);
+  padding: 20px;
+}
+
+/* ---------- Nút viên thuốc ---------- */
+.ttv-nut,
+.ttv-nut-phu {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  min-height: var(--ttv-cham-toi-thieu);
+  min-width: var(--ttv-cham-toi-thieu);
+  padding: 8px 24px;
+  border-radius: var(--ttv-bo-nut);
+  font-family: var(--ttv-phong-tieu-de);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  transition: transform .08s ease, border-bottom-width .08s ease;
+}
+.ttv-nut {
+  background: var(--ttv-chinh);
+  color: #FFFFFF;
+  border: 2px solid var(--ttv-chinh);
+  border-bottom: 4px solid var(--ttv-chinh-dam);
+}
+.ttv-nut-phu {
+  background: var(--ttv-the);
+  color: var(--ttv-chu);
+  border: 2px solid var(--ttv-chu);
+  border-bottom: 4px solid var(--ttv-chu);
+}
+.ttv-nut:hover { background: var(--ttv-chinh-dam); border-color: var(--ttv-chinh-dam); }
+.ttv-nut-phu:hover { background: var(--ttv-nen); }
+.ttv-nut:active,
+.ttv-nut-phu:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+  margin-bottom: 2px;
+}
+.ttv-nut[disabled],
+.ttv-nut-phu[disabled],
+.ttv-nut[aria-disabled="true"],
+.ttv-nut-phu[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+
+/* ---------- Nhãn phản hồi, sao, huy hiệu ---------- */
+.ttv-nhan-dung,
+.ttv-nhan-sai {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 4px 18px;
+  border-radius: var(--ttv-bo-nut);
+  font-family: var(--ttv-phong-tieu-de);
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 2px solid currentColor;
+}
+.ttv-nhan-dung { color: var(--ttv-dung); background: var(--ttv-dung-nen); }
+.ttv-nhan-sai  { color: var(--ttv-sai);  background: var(--ttv-sai-nen); }
+
+.ttv-sao {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: var(--ttv-sao);
+  clip-path: polygon(50% 3%, 62% 36%, 97% 37%, 69% 58%, 79% 92%, 50% 72%, 21% 92%, 31% 58%, 3% 37%, 38% 36%);
+  vertical-align: middle;
+}
+.ttv-sao-tat { background: var(--ttv-vien); }
+
+.ttv-huy-hieu {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--ttv-bo-nut);
+  background: var(--ttv-la-phong);
+  color: #FFFFFF;
+  font-family: var(--ttv-phong);
+  font-weight: 800;
+  font-size: .85rem;
+}
+
+/* ---------- Bóng thoại của Trâu Con ---------- */
+.ttv-bong-thoai {
+  position: relative;
+  box-sizing: border-box;
+  background: var(--ttv-the);
+  color: var(--ttv-chu);
+  border: 2px solid var(--ttv-vien);
+  border-radius: var(--ttv-bo-goc);
+  padding: 16px 20px;
+  font-family: var(--ttv-phong-tieu-de);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+.ttv-bong-thoai::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  bottom: 22px;
+  width: 22px;
+  height: 22px;
+  background: var(--ttv-the);
+  border-left: 2px solid var(--ttv-vien);
+  border-bottom: 2px solid var(--ttv-vien);
+  transform: rotate(45deg);
+}
+
+/* ---------- Cảnh trời – mây – ruộng bậc thang ---------- */
+.ttv-canh {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--ttv-troi);
+  color: var(--ttv-chu);
+  padding-bottom: 120px;
+}
+.ttv-canh > :not(.ttv-canh-trang-tri) { position: relative; z-index: 1; }
+.ttv-canh-trang-tri {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ttv-canh-trang-tri span { position: absolute; display: block; }
+.ttv-mat-troi {
+  top: 28px;
+  right: 8%;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: var(--ttv-mat-troi);
+  box-shadow: 0 0 0 14px rgba(252, 230, 164, .45);
+}
+.ttv-may {
+  width: 150px;
+  height: 46px;
+  border-radius: var(--ttv-bo-nut);
+  background: var(--ttv-may);
+}
+.ttv-may::before,
+.ttv-may::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--ttv-may);
+}
+.ttv-may::before { width: 62px; height: 62px; left: 24px; top: -30px; }
+.ttv-may::after  { width: 46px; height: 46px; left: 74px; top: -20px; }
+.ttv-may-1 { top: 54px; left: 6%; }
+.ttv-may-2 { top: 120px; left: 46%; transform: scale(.7); }
+.ttv-may-3 { top: 36px; right: 26%; transform: scale(.55); }
+
+.ttv-ruong {
+  left: -10%;
+  width: 120%;
+  border-radius: 50% 50% 0 0 / 70px 70px 0 0;
+}
+.ttv-ruong-1 { bottom: 0; height: 150px; background: var(--ttv-lua-sang); left: -30%; width: 110%; }
+.ttv-ruong-2 { bottom: 0; height: 104px; background: var(--ttv-lua); left: 15%; width: 100%; }
+.ttv-ruong-3 { bottom: 0; height: 60px;  background: var(--ttv-lua-dam); left: -10%; width: 120%; border-radius: 50% 50% 0 0 / 40px 40px 0 0; }
+/* bờ ruộng: một đường kem rơm mảnh trên mép mỗi bậc */
+.ttv-ruong-1, .ttv-ruong-2 { box-shadow: inset 0 4px 0 rgba(255, 255, 255, .35); }
+
+@media (max-width: 600px) {
+  .ttv-canh { padding-bottom: 90px; }
+  .ttv-mat-troi { width: 64px; height: 64px; top: 18px; }
+  .ttv-may-2 { display: none; }
+  .ttv-ruong-1 { height: 110px; }
+  .ttv-ruong-2 { height: 76px; }
+  .ttv-ruong-3 { height: 44px; }
+}
+
+/* ---------- Thanh tab ---------- */
+.ttv-thanh {
+  all: initial;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 64px;
+  padding: 8px 16px;
+  background: var(--ttv-the);
+  border-bottom: 2px solid var(--ttv-vien);
+  font-family: var(--ttv-phong);
+  color: var(--ttv-chu);
+  position: relative;
+  z-index: 50;
+}
+.ttv-thanh *, .ttv-chan * { box-sizing: border-box; }
+.ttv-thanh-logo {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ttv-cham-toi-thieu);
+  border-radius: 12px;
+}
+.ttv-thanh-logo img {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: none;
+}
+.ttv-thanh-tab {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 2px;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.ttv-thanh-tab li { flex: 0 0 auto; margin: 0; padding: 0; }
+.ttv-thanh-tab a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--ttv-cham-toi-thieu);
+  padding: 6px 14px;
+  border-radius: 14px 14px 6px 6px;
+  border-bottom: 4px solid transparent;
+  font-family: var(--ttv-phong);
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.2;
+  color: var(--ttv-chu);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ttv-thanh-tab a:hover { background: var(--ttv-nen); }
+.ttv-thanh-tab a[aria-current="page"] {
+  background: var(--ttv-tab-nhat);
+  color: var(--ttv-tab-dam);
+  border-bottom-color: var(--ttv-tab-mau);
+}
+.ttv-cham {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: var(--ttv-tab-mau);
+}
+.ttv-thanh-ngon-ngu {
+  flex: 0 0 auto;
+  display: inline-flex;
+  padding: 3px;
+  border: 2px solid var(--ttv-vien);
+  border-radius: var(--ttv-bo-nut);
+  background: var(--ttv-nen);
+}
+.ttv-thanh-ngon-ngu button {
+  all: unset;
+  box-sizing: border-box;
+  min-width: var(--ttv-cham-toi-thieu);
+  min-height: 38px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ttv-bo-nut);
+  font-family: var(--ttv-phong-tieu-de);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--ttv-chu);
+  cursor: pointer;
+}
+.ttv-thanh-ngon-ngu button[aria-pressed="true"] {
+  background: var(--ttv-chu);
+  color: #FFFFFF;
+}
+
+@media (max-width: 760px) {
+  .ttv-thanh { gap: 8px; padding: 6px 10px; min-height: 56px; }
+  .ttv-thanh-logo img { height: 32px; }
+  .ttv-thanh-tab a { padding: 6px 10px; font-size: 14px; }
+}
+
+/* ---------- Chân trang ---------- */
+.ttv-chan {
+  box-sizing: border-box;
+  padding: 18px 16px 22px;
+  text-align: center;
+  font-family: var(--ttv-phong);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ttv-chu-mo);
+}
+.ttv-chan p { margin: 2px 0; }
+.ttv-chan a { color: var(--ttv-chu-mo); min-height: 24px; }
+.ttv-ban-quyen { opacity: .9; }
+
+/* ---------- Thẻ góc học (dựng bằng TTV.taoTheGoc) ---------- */
+.ttv-the-goc {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ttv-chu);
+  transition: transform .12s ease;
+}
+.ttv-the-goc:hover { transform: translateY(-3px); }
+.ttv-the-goc-dai {
+  height: 10px;
+  background: var(--ttv-goc);
+}
+.ttv-the-goc-anh {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 140px;
+  padding: 12px 12px 0;
+  background: var(--ttv-goc-nhat);
+}
+.ttv-the-goc-anh img {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.ttv-the-goc-noi-dung {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 auto;
+  padding: 14px 18px 18px;
+}
+.ttv-the-goc-ten {
+  font-family: var(--ttv-phong-tieu-de);
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--ttv-chu);
+  margin: 0;
+}
+.ttv-the-goc-mo-ta {
+  margin: 0 0 6px;
+  color: var(--ttv-chu-phu);
+  font-size: .98rem;
+  line-height: 1.4;
+  flex: 1 1 auto;
+}
+.ttv-the-goc-vao {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ttv-cham-toi-thieu);
+  padding: 6px 18px;
+  border-radius: var(--ttv-bo-nut);
+  background: var(--ttv-goc-dam);
+  color: #FFFFFF;
+  font-family: var(--ttv-phong-tieu-de);
+  font-weight: 700;
+}
+
+/* ---------- Focus bàn phím ---------- */
+.ttv-nut:focus-visible,
+.ttv-nut-phu:focus-visible,
+.ttv-the-goc:focus-visible,
+.ttv-thanh a:focus-visible,
+.ttv-thanh button:focus-visible,
+.ttv-chan a:focus-visible,
+[data-ttv-nen] a:focus-visible,
+[data-ttv-nen] button:focus-visible,
+.ttv-trang a:focus-visible,
+.ttv-trang button:focus-visible {
+  outline: 3px solid var(--ttv-chu);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px #FFFFFF;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ttv-nut, .ttv-nut-phu, .ttv-the-goc { transition: none; }
+  .ttv-the-goc:hover { transform: none; }
+}
