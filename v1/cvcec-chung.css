@@ -393,7 +393,8 @@ body[data-ttv-nen="don-gian"] .ttv-canh-trang-tri { display: none; }
 }
 .ttv-chan p { margin: 2px 0; }
 .ttv-chan a { color: var(--ttv-chu-mo); min-height: 24px; }
-.ttv-ban-quyen { opacity: .9; }
+/* Không làm mờ bằng opacity: --ttv-chu-mo (#5F6670) đạt 5,49:1 trên nền kem và 5,80:1 trên nền trắng. */
+.ttv-ban-quyen { color: var(--ttv-chu-mo); }
 
 /* ---------- Thẻ góc học (dựng bằng TTV.taoTheGoc) ---------- */
 .ttv-the-goc {
