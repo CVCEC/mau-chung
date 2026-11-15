@@ -55,6 +55,8 @@ Trang nào có tên miền nằm trong `TTV_DANH_SACH` (các góc học) chỉ c
 
 - Khi mở, góc học gửi `{loai: "cvcec-hoi-cong"}` lên khung cha, chỉ tới `https://vietclass.cvcec.org`. Cổng trả lời `{loai: "cvcec-cong-tra-loi", hopLe: true}`, và chỉ trả lời khi khung đang mở góc học cho người đã đăng nhập.
 - Mở thẳng (không nằm trong khung), bị nhúng vào trang khác, hoặc cổng không trả lời trong 4 giây: nội dung bị che. Thay vào đó là màn Trâu Con "Mời bạn vào học qua Trường Tiếng Việt Của Em", có nút dẫn về đúng góc trên cổng (`/#id`).
+- **Học thử bài 1** (khách chưa đăng nhập): cổng trả lời `{hopLe: true, cheDo: "thu", duongThu: [...]}`. Trang không nằm trong `duongThu` (ví dụ `/bai-2/`) thì hiện "Bạn đã học thử xong bài 1!" kèm nút Đăng nhập, Đăng ký. Danh sách trang học thử của mỗi góc khai trong cổng (`chung/gioi-thieu-goc.js` của kho cong-truong-tieng-viet).
+- Góc học một trang (bài mở bằng mã trong trang, không đổi địa chỉ) gọi `TTV.choPhepBai(maBai)` trước khi mở một bài. Hàm trả `false` và mời đăng nhập khi khách học thử mở bài khác bài thử (`baiThu` do cổng gửi). `TTV.cheDoHoc()` trả `"hoc"`, `"thu"` hoặc `null`.
 - Không đổi hay xoá khoá localStorage nào: sao và tiến độ trên máy giữ nguyên.
 - Trang không có trong `TTV_DANH_SACH` (ví dụ mau.cvcec.org, máy thử `localhost`) không bị ảnh hưởng.
 - Đây là lớp chặn cho người dùng thông thường. Người rành kỹ thuật vẫn có thể vượt qua, vì mã nguồn trang tĩnh luôn tải về trình duyệt.

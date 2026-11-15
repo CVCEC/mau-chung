@@ -254,16 +254,29 @@
     vi: { tieuDe: "Mời bạn vào học qua Trường Tiếng Việt Của Em", nd: "Góc học này chỉ mở trong Trường Tiếng Việt Của Em. Bạn đăng nhập ở cổng trường rồi vào học nhé, Trâu Con sẽ lưu sao và tiến độ cho bạn.", nut: "Vào học qua cổng" },
     en: { tieuDe: "Please learn through Trường Tiếng Việt Của Em", nd: "This learning corner opens only inside Trường Tiếng Việt Của Em. Please sign in on the school portal to start learning, and Trâu Con will save your stars and progress.", nut: "Go to the school portal" }
   };
+  // Học thử (khách chưa đăng nhập): chỉ được học bài 1
+  var CHU_THU = {
+    vi: { tieuDe: "Bạn đã học thử xong bài 1!", nd: "Bạn đăng nhập để học tiếp các bài sau nhé. Trâu Con sẽ lưu sao và tiến độ cho bạn.", nut: "Đăng nhập để học tiếp", nut2: "Đăng ký" },
+    en: { tieuDe: "You have finished the trial lesson!", nd: "Please sign in to keep learning the next lessons. Trâu Con will save your stars and progress.", nut: "Sign in to keep learning", nut2: "Sign up" }
+  };
+  var cheDoHoc = null;   // "hoc" | "thu" | null (chưa biết)
+  var baiThu = null;     // mã bài học thử (góc học một trang dùng với TTV.choPhepBai)
+  function duongHienTai() {
+    var p = location.pathname.replace(/index\.html$/, "");
+    if (!/\/$/.test(p) && !/\.[a-z0-9]+$/i.test(p)) p += "/";
+    return p;
+  }
   var daKhoa = false;
-  function khoaGocHoc(muc) {
+  function khoaGocHoc(muc, loai) {
     if (daKhoa || !document.body) return;
     daKhoa = true;
+    var laThu = loai === "thu";
     try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
     var media = document.querySelectorAll("audio, video");
     for (var m = 0; m < media.length; m++) { try { media[m].pause(); } catch (e) {} }
     var con = document.body.children;
     for (var i = 0; i < con.length; i++) { con[i].setAttribute("inert", ""); con[i].setAttribute("aria-hidden", "true"); }
-    var c = CHU_KHOA[ngonNgu] || CHU_KHOA.vi;
+    var c = (laThu ? CHU_THU : CHU_KHOA)[ngonNgu] || (laThu ? CHU_THU : CHU_KHOA).vi;
     var man = tao("div", "ttv-man-khoa");
     man.setAttribute("role", "dialog");
     man.setAttribute("aria-modal", "true");
@@ -279,9 +292,16 @@
     var p = tao("p", "", c.nd);
     p.style.cssText = "margin:0 0 18px;font-size:1.05rem;line-height:1.5";
     var a = tao("a", "ttv-nut", c.nut);
-    a.href = CONG + "/#" + muc.id;
+    var ve = encodeURIComponent("/#" + muc.id);
+    a.href = laThu ? CONG + "/dang-nhap/?ve=" + ve : CONG + "/#" + muc.id;
     a.target = "_top"; // thoát khỏi khung lạ nếu bị nhúng; vẫn là cùng tab
     the.appendChild(img); the.appendChild(h); the.appendChild(p); the.appendChild(a);
+    if (laThu) {
+      var a2 = tao("a", "ttv-nut-phu", c.nut2);
+      a2.href = CONG + "/dang-nhap/?che-do=ky&ve=" + ve; a2.target = "_top";
+      a2.style.marginLeft = "10px";
+      the.appendChild(a2);
+    }
     man.appendChild(the);
     document.body.appendChild(man);
     document.documentElement.style.overflow = "hidden";
@@ -295,7 +315,11 @@
       var d = e.data;
       if (!d || typeof d !== "object" || d.loai !== "cvcec-cong-tra-loi") return;
       daTraLoi = true;
-      if (d.hopLe !== true) khoaGocHoc(muc);
+      if (d.hopLe !== true) { khoaGocHoc(muc); return; }
+      cheDoHoc = d.cheDo === "thu" ? "thu" : "hoc";
+      baiThu = typeof d.baiThu === "string" ? d.baiThu : null;
+      // Học thử: trang không thuộc bài 1 thì mời đăng nhập
+      if (cheDoHoc === "thu" && Object.prototype.toString.call(d.duongThu) === "[object Array]" && d.duongThu.indexOf(duongHienTai()) < 0) khoaGocHoc(muc, "thu");
     });
     var hoi = function () {
       if (daTraLoi) return;
@@ -354,6 +378,14 @@
     ngonNgu: function () { return ngonNgu; },
     datNgonNgu: datNgonNgu,
     taoTheGoc: taoTheGoc,
+    // Học thử: góc học một trang gọi trước khi mở một bài. Trả false (và mời đăng nhập) nếu khách mở bài khác bài thử.
+    cheDoHoc: function () { return cheDoHoc; },
+    choPhepBai: function (maBai) {
+      if (cheDoHoc !== "thu") return true;
+      if (baiThu && maBai === baiThu) return true;
+      var muc = gocHienTai(); if (muc) khoaGocHoc(muc, "thu");
+      return false;
+    },
     trangTriCanh: trangTriCanh
   };
 
