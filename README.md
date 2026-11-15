@@ -49,6 +49,16 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 - Sự kiện `document` → `"ttv-ngon-ngu"` (`event.detail.ngonNgu`) khi bé bấm VI/EN.
 - Khoá localStorage duy nhất bộ mẫu dùng: `ttv-ngon-ngu`. Bộ mẫu không đụng tới khoá nào khác.
 
+## Chỉ học qua cổng (từ 15-11-2026)
+
+Trang nào có tên miền nằm trong `TTV_DANH_SACH` (các góc học) chỉ chạy được **bên trong khung của cổng vietclass.cvcec.org khi người học đã đăng nhập**:
+
+- Khi mở, góc học gửi `{loai: "cvcec-hoi-cong"}` lên khung cha, chỉ tới `https://vietclass.cvcec.org`. Cổng trả lời `{loai: "cvcec-cong-tra-loi", hopLe: true}`, và chỉ trả lời khi khung đang mở góc học cho người đã đăng nhập.
+- Mở thẳng (không nằm trong khung), bị nhúng vào trang khác, hoặc cổng không trả lời trong 4 giây: nội dung bị che. Thay vào đó là màn Trâu Con "Mời bạn vào học qua Trường Tiếng Việt Của Em", có nút dẫn về đúng góc trên cổng (`/#id`).
+- Không đổi hay xoá khoá localStorage nào: sao và tiến độ trên máy giữ nguyên.
+- Trang không có trong `TTV_DANH_SACH` (ví dụ mau.cvcec.org, máy thử `localhost`) không bị ảnh hưởng.
+- Đây là lớp chặn cho người dùng thông thường. Người rành kỹ thuật vẫn có thể vượt qua, vì mã nguồn trang tĩnh luôn tải về trình duyệt.
+
 ## Ảnh (`assets/`)
 
 `logo.png` và 8 ảnh Trâu Con chính thức (chép từ CVCEC/khobautiengviet): `trau-wave`, `trau-cheer`, `trau-hiking`,

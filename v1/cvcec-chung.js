@@ -243,6 +243,69 @@
     } catch (e) {}
   }
 
+  // ------------------------------------------------------------------
+  // CHỈ HỌC QUA CỔNG: góc học (trang có trong TTV_DANH_SACH) chỉ chạy bên trong
+  // khung của cổng vietclass.cvcec.org khi người học đã đăng nhập.
+  // Mở thẳng, hoặc bị nhúng vào trang khác: che nội dung, mời vào học qua cổng.
+  // Cổng trả lời câu hỏi "cvcec-hoi-cong" bằng "cvcec-cong-tra-loi" (chỉ từ đúng nguồn cổng).
+  // Sao và tiến độ lưu trên máy (localStorage) giữ nguyên.
+  // ------------------------------------------------------------------
+  var CHU_KHOA = {
+    vi: { tieuDe: "Mời bạn vào học qua Trường Tiếng Việt Của Em", nd: "Góc học này chỉ mở trong Trường Tiếng Việt Của Em. Bạn đăng nhập ở cổng trường rồi vào học nhé, Trâu Con sẽ lưu sao và tiến độ cho bạn.", nut: "Vào học qua cổng" },
+    en: { tieuDe: "Please learn through Trường Tiếng Việt Của Em", nd: "This learning corner opens only inside Trường Tiếng Việt Của Em. Please sign in on the school portal to start learning, and Trâu Con will save your stars and progress.", nut: "Go to the school portal" }
+  };
+  var daKhoa = false;
+  function khoaGocHoc(muc) {
+    if (daKhoa || !document.body) return;
+    daKhoa = true;
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
+    var media = document.querySelectorAll("audio, video");
+    for (var m = 0; m < media.length; m++) { try { media[m].pause(); } catch (e) {} }
+    var con = document.body.children;
+    for (var i = 0; i < con.length; i++) { con[i].setAttribute("inert", ""); con[i].setAttribute("aria-hidden", "true"); }
+    var c = CHU_KHOA[ngonNgu] || CHU_KHOA.vi;
+    var man = tao("div", "ttv-man-khoa");
+    man.setAttribute("role", "dialog");
+    man.setAttribute("aria-modal", "true");
+    man.setAttribute("aria-labelledby", "ttv-man-khoa-tieu-de");
+    man.style.cssText = "position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;overflow:auto;background:var(--ttv-nen,#FFF8EC);font-family:var(--ttv-phong,sans-serif);color:var(--ttv-chu,#003060);text-align:center";
+    var the = tao("div");
+    the.style.cssText = "max-width:480px;background:var(--ttv-the,#FFFFFF);border:2px solid var(--ttv-vien,#F3E9D6);border-radius:24px;padding:28px 24px";
+    var img = tao("img");
+    img.src = anh("trau-wave.png"); img.alt = ""; img.width = 140; img.style.cssText = "width:140px;height:auto;display:block;margin:0 auto 12px";
+    var h = tao("h1", "", c.tieuDe);
+    h.id = "ttv-man-khoa-tieu-de";
+    h.style.cssText = "margin:0 0 10px;font-family:var(--ttv-phong-tieu-de,sans-serif);font-weight:800;font-size:1.5rem;line-height:1.25";
+    var p = tao("p", "", c.nd);
+    p.style.cssText = "margin:0 0 18px;font-size:1.05rem;line-height:1.5";
+    var a = tao("a", "ttv-nut", c.nut);
+    a.href = CONG + "/#" + muc.id;
+    a.target = "_top"; // thoát khỏi khung lạ nếu bị nhúng; vẫn là cùng tab
+    the.appendChild(img); the.appendChild(h); the.appendChild(p); the.appendChild(a);
+    man.appendChild(the);
+    document.body.appendChild(man);
+    document.documentElement.style.overflow = "hidden";
+    try { a.focus(); } catch (e) {}
+  }
+  function baoVeGocHoc(muc) {
+    if (!trongKhung) { khoaGocHoc(muc); return; }
+    var daTraLoi = false;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== CONG || e.source !== window.parent) return;
+      var d = e.data;
+      if (!d || typeof d !== "object" || d.loai !== "cvcec-cong-tra-loi") return;
+      daTraLoi = true;
+      if (d.hopLe !== true) khoaGocHoc(muc);
+    });
+    var hoi = function () {
+      if (daTraLoi) return;
+      // targetOrigin = cổng: nếu khung cha không phải cổng thì tin nhắn không được gửi đi
+      try { window.parent.postMessage({ loai: "cvcec-hoi-cong", id: muc.id }, CONG); } catch (e) {}
+    };
+    hoi(); setTimeout(hoi, 700); setTimeout(hoi, 1800);
+    setTimeout(function () { if (!daTraLoi) khoaGocHoc(muc); }, 4000);
+  }
+
   function khoiDong() {
     var hienTai = gocHienTai();
     if (hienTai) ganMauGoc(document.documentElement, hienTai);
@@ -260,6 +323,8 @@
     }
     chan = veChan();
     capNhatChu();
+
+    if (hienTai) baoVeGocHoc(hienTai);
 
     if (trongKhung) {
       var gui = function () {
