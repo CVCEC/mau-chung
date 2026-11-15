@@ -21,7 +21,7 @@
     { id: "venhaem", ten_vi: "Về Nhà Em", ten_en: "Về Nhà Em – Vietnamese food", ngan_vi: "Về Nhà Em", ngan_en: "Food",
       mo_ta_vi: "Khám phá món ăn và vào bếp cùng gia đình Việt", mo_ta_en: "Discover Vietnamese food and cook at home",
       url: "https://venhaem.cvcec.org/", mau: "#F47B3A", mau_dam: "#B5461A", mau_nhat: "#FDE8DC", trau: "trau-cheer.png" },
-    { id: "baihoc", ten_vi: "Bài học", ten_en: "Lessons", ngan_vi: "Bài học", ngan_en: "Lessons",
+    { id: "baihoc", ten_vi: "Tiếng Việt và Văn hoá Truyền thống", ten_en: "Vietnamese Language & Traditional Culture", ngan_vi: "Văn hoá", ngan_en: "Culture",
       mo_ta_vi: "Lộ trình bài học từng bước, kèm trò chơi", mo_ta_en: "Step-by-step lessons with games",
       url: "https://baihoc.cvcec.org/", mau: "#3A86D4", mau_dam: "#1F5FA8", mau_nhat: "#DEEBF9", trau: "trau-thinking.png" },
     { id: "khobau", ten_vi: "Kho báu ca dao, tục ngữ", ten_en: "Folk Sayings Treasure", ngan_vi: "Kho báu", ngan_en: "Sayings",
