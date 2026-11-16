@@ -36,6 +36,9 @@
     { id: "cotich", ten_vi: "Truyện cổ tích", ten_en: "Fairy Tales", ngan_vi: "Cổ tích", ngan_en: "Tales",
       mo_ta_vi: "Đọc truyện cổ tích, chơi trò ôn từ", mo_ta_en: "Read Vietnamese fairy tales and play word games",
       url: "https://truyencotich.cvcec.org/", mau: "#9B7FE0", mau_dam: "#5B3FB8", mau_nhat: "#ECE6FA", trau: "trau-reading.png" },
+    { id: "cuocsong", ten_vi: "Bài học cuộc sống", ten_en: "Life Lessons", ngan_vi: "Cuộc sống", ngan_en: "Life Lessons",
+      mo_ta_vi: "Thơ Lên Sáu, Lên Tám của Tản Đà: nghe cô Hà giảng, học làm người", mo_ta_en: "Tản Đà's poems Lên Sáu and Lên Tám: listen to cô Hà and learn life lessons",
+      url: "https://cuocsong.cvcec.org/", mau: "#8FA032", mau_dam: "#4E5A14", mau_nhat: "#EFF3DA", trau: "trau-wave.png" },
     { id: "trienlam", ten_vi: "Triển lãm Em học tiếng Việt", ten_en: "Student Exhibition", ngan_vi: "Triển lãm", ngan_en: "Exhibition",
       mo_ta_vi: "Bài đọc và chữ viết của các bạn nhỏ", mo_ta_en: "Reading and handwriting from our young learners",
       url: "https://trienlam.cvcec.org/", mau: "#EE6F9C", mau_dam: "#B0305E", mau_nhat: "#FCE3EC", trau: "trau-listening.png" }
