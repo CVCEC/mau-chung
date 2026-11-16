@@ -334,6 +334,8 @@
       if (d.hopLe !== true) { khoaGocHoc(muc); return; }
       cheDoHoc = d.cheDo === "thu" ? "thu" : "hoc";
       baiThu = typeof d.baiThu === "string" ? d.baiThu : null;
+      // Báo cho trang biết chế độ học (ví dụ để vẽ nhãn "Đăng nhập để học" trên mục lục)
+      try { document.dispatchEvent(new CustomEvent("ttv-che-do", { detail: { cheDo: cheDoHoc, baiThu: baiThu } })); } catch (e) {}
       // Học thử: trang không thuộc bài 1 thì mời đăng nhập
       if (cheDoHoc === "thu" && Object.prototype.toString.call(d.duongThu) === "[object Array]" && d.duongThu.indexOf(duongHienTai()) < 0) khoaGocHoc(muc, "thu");
     });
@@ -396,6 +398,12 @@
     taoTheGoc: taoTheGoc,
     // Học thử: góc học một trang gọi trước khi mở một bài. Trả false (và mời đăng nhập) nếu khách mở bài khác bài thử.
     cheDoHoc: function () { return cheDoHoc; },
+    // Đường tới trang đăng nhập (ky = true: mở thẳng phần Đăng ký), xong thì quay về góc học này trên cổng
+    duongDangNhap: function (ky) {
+      var muc = gocHienTai();
+      var ve = encodeURIComponent("/#" + (muc ? muc.id : ""));
+      return CONG + "/dang-nhap/?" + (ky ? "che-do=ky&" : "") + "ve=" + ve;
+    },
     choPhepBai: function (maBai) {
       if (cheDoHoc !== "thu") return true;
       if (baiThu && maBai === baiThu) return true;
