@@ -11,7 +11,7 @@ Xem thử: https://mau.cvcec.org
 ```
 
 Bộ mẫu tự làm:
-- Chèn **thanh tab** đầu `<body>`: logo (về https://vietclass.cvcec.org), 7 góc học, nút VI/EN. Tab của trang hiện tại được tô màu theo `location.hostname`.
+- Chèn **thanh tab** đầu `<body>`: logo (về https://vietclass.cvcec.org), 8 góc học, nút VI/EN. Tab của trang hiện tại được tô màu theo `location.hostname` (xem mục "Hai góc học chung một tên miền").
 - Chèn **chân trang** có dòng "Copyrighted by CVCEC Trường Tiếng Việt Của Em 2026".
 - Gán màu của góc học hiện tại vào `--ttv-goc`, `--ttv-goc-dam`, `--ttv-goc-nhat` trên `<html>`.
 - Vẽ trời – mây – mặt trời – ruộng bậc thang vào mọi phần tử `.ttv-canh`.
@@ -49,13 +49,22 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 - Sự kiện `document` → `"ttv-ngon-ngu"` (`event.detail.ngonNgu`) khi bé bấm VI/EN.
 - Khoá localStorage duy nhất bộ mẫu dùng: `ttv-ngon-ngu`. Bộ mẫu không đụng tới khoá nào khác.
 
+## Hai góc học chung một tên miền (từ 16-11-2026)
+
+baihoc.cvcec.org chứa hai góc học: **Tiếng Việt cơ bản** (`id: "baihoc"`, Bài 1–80 và các bài ôn tập) và **Văn hoá truyền thống** (`id: "vanhoa"`, Bài 81–145). Hai mục này trong `TTV_DANH_SACH` có thêm:
+
+- `phan`: giá trị `?phan=` của trang mục lục (`tieng-viet` hoặc `van-hoa`);
+- `duong`: biểu thức chính quy cho đường dẫn bài thuộc góc đó (ví dụ `/bai-81/` thuộc `vanhoa`).
+
+`TTV.gocHienTai()` chọn theo `?phan=` trước, rồi theo `duong`, cuối cùng lấy mục đầu tiên của tên miền. Ảnh Trâu Con của Văn hoá truyền thống: `assets/trau-flag.png` (ảnh chính thức, chép từ cổng).
+
 ## Chỉ học qua cổng (từ 15-11-2026)
 
 Trang nào có tên miền nằm trong `TTV_DANH_SACH` (các góc học) chỉ chạy được **bên trong khung của cổng vietclass.cvcec.org khi người học đã đăng nhập**:
 
 - Khi mở, góc học gửi `{loai: "cvcec-hoi-cong"}` lên khung cha, chỉ tới `https://vietclass.cvcec.org`. Cổng trả lời `{loai: "cvcec-cong-tra-loi", hopLe: true}`, và chỉ trả lời khi khung đang mở góc học cho người đã đăng nhập.
 - Mở thẳng (không nằm trong khung), bị nhúng vào trang khác, hoặc cổng không trả lời trong 4 giây: nội dung bị che. Thay vào đó là màn Trâu Con "Mời bạn vào học qua Trường Tiếng Việt Của Em", có nút dẫn về đúng góc trên cổng (`/#id`).
-- **Học thử bài 1** (khách chưa đăng nhập): cổng trả lời `{hopLe: true, cheDo: "thu", duongThu: [...]}`. Trang không nằm trong `duongThu` (ví dụ `/bai-2/`) thì hiện "Bạn đã học thử xong bài 1!" kèm nút Đăng nhập, Đăng ký. Danh sách trang học thử của mỗi góc khai trong cổng (`chung/gioi-thieu-goc.js` của kho cong-truong-tieng-viet).
+- **Học thử một bài** (khách chưa đăng nhập): cổng trả lời `{hopLe: true, cheDo: "thu", duongThu: [...]}`. Trang không nằm trong `duongThu` (ví dụ `/bai-2/`) thì hiện "Bạn đã học thử xong một bài!" kèm nút Đăng nhập, Đăng ký. Danh sách trang học thử của mỗi góc khai trong cổng (`chung/gioi-thieu-goc.js` của kho cong-truong-tieng-viet).
 - Góc học một trang (bài mở bằng mã trong trang, không đổi địa chỉ) gọi `TTV.choPhepBai(maBai)` trước khi mở một bài. Hàm trả `false` và mời đăng nhập khi khách học thử mở bài khác bài thử (`baiThu` do cổng gửi). `TTV.cheDoHoc()` trả `"hoc"`, `"thu"` hoặc `null`.
 - Không đổi hay xoá khoá localStorage nào: sao và tiến độ trên máy giữ nguyên.
 - Trang không có trong `TTV_DANH_SACH` (ví dụ mau.cvcec.org, máy thử `localhost`) không bị ảnh hưởng.

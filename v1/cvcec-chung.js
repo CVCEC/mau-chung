@@ -21,9 +21,15 @@
     { id: "venhaem", ten_vi: "Về Nhà Em", ten_en: "Về Nhà Em – Vietnamese food", ngan_vi: "Về Nhà Em", ngan_en: "Food",
       mo_ta_vi: "Khám phá món ăn và vào bếp cùng gia đình Việt", mo_ta_en: "Discover Vietnamese food and cook at home",
       url: "https://venhaem.cvcec.org/", mau: "#F47B3A", mau_dam: "#B5461A", mau_nhat: "#FDE8DC", trau: "trau-cheer.png" },
-    { id: "baihoc", ten_vi: "Tiếng Việt và Văn hoá Truyền thống", ten_en: "Vietnamese Language & Traditional Culture", ngan_vi: "Văn hoá", ngan_en: "Culture",
-      mo_ta_vi: "Lộ trình bài học từng bước, kèm trò chơi", mo_ta_en: "Step-by-step lessons with games",
-      url: "https://baihoc.cvcec.org/", mau: "#3A86D4", mau_dam: "#1F5FA8", mau_nhat: "#DEEBF9", trau: "trau-thinking.png" },
+    // Hai góc cùng trang baihoc.cvcec.org, phân biệt bằng "phan" (?phan=…) và "duong" (đường dẫn của bài)
+    { id: "baihoc", ten_vi: "Tiếng Việt cơ bản", ten_en: "Basic Vietnamese", ngan_vi: "Tiếng Việt", ngan_en: "Vietnamese",
+      mo_ta_vi: "Bảng chữ cái, âm, vần và tập đọc, kèm trò chơi", mo_ta_en: "The alphabet, sounds, rhymes and reading, with games",
+      url: "https://baihoc.cvcec.org/?phan=tieng-viet", phan: "tieng-viet", duong: "^/(bai-0?([1-9]|[1-7][0-9]|80)|on-tap-[0-9]+)(/|$)",
+      mau: "#3A86D4", mau_dam: "#1F5FA8", mau_nhat: "#DEEBF9", trau: "trau-thinking.png" },
+    { id: "vanhoa", ten_vi: "Văn hoá truyền thống", ten_en: "Traditional Culture", ngan_vi: "Văn hoá", ngan_en: "Culture",
+      mo_ta_vi: "Lễ Tết, phong tục và đời sống Việt qua bài đọc và trò chơi", mo_ta_en: "Festivals, customs and Vietnamese life through readings and games",
+      url: "https://baihoc.cvcec.org/?phan=van-hoa", phan: "van-hoa", duong: "^/bai-(8[1-9]|9[0-9]|1[0-9][0-9])(/|$)",
+      mau: "#A9774A", mau_dam: "#6F4A26", mau_nhat: "#F4E9DD", trau: "trau-flag.png" },
     { id: "khobau", ten_vi: "Kho báu ca dao, tục ngữ", ten_en: "Folk Sayings Treasure", ngan_vi: "Kho báu", ngan_en: "Sayings",
       mo_ta_vi: "Ca dao, tục ngữ, thành ngữ qua trò chơi", mo_ta_en: "Folk verses and proverbs through games",
       url: "https://khobau.cvcec.org/", mau: "#F5B730", mau_dam: "#8A6200", mau_nhat: "#FDF1D3", trau: "trau-peeking.png" },
@@ -74,14 +80,24 @@
 
   function anh(ten) { return GOC_BO_MAU + "assets/" + ten; }
 
+  // Góc học của trang đang mở. Nhiều góc cùng một tên miền (baihoc, vanhoa) thì chọn theo
+  // ?phan=… rồi theo đường dẫn ("duong"); không khớp thì lấy góc đầu tiên của tên miền đó.
   function gocHienTai() {
     var host = (location.hostname || "").toLowerCase();
+    var cung = [];
     for (var i = 0; i < TTV_DANH_SACH.length; i++) {
       try {
-        if (new URL(TTV_DANH_SACH[i].url).hostname === host) return TTV_DANH_SACH[i];
+        if (new URL(TTV_DANH_SACH[i].url).hostname === host) cung.push(TTV_DANH_SACH[i]);
       } catch (e) {}
     }
-    return null;
+    if (cung.length < 2) return cung[0] || null;
+    var phan = "";
+    try { phan = new URLSearchParams(location.search).get("phan") || ""; } catch (e) {}
+    for (var j = 0; j < cung.length; j++) if (phan && cung[j].phan === phan) return cung[j];
+    for (var k = 0; k < cung.length; k++) {
+      try { if (cung[k].duong && new RegExp(cung[k].duong).test(location.pathname)) return cung[k]; } catch (e) {}
+    }
+    return cung[0];
   }
 
   function ganMauGoc(el, muc) {
@@ -254,9 +270,9 @@
     vi: { tieuDe: "Mời bạn vào học qua Trường Tiếng Việt Của Em", nd: "Góc học này chỉ mở trong Trường Tiếng Việt Của Em. Bạn đăng nhập ở cổng trường rồi vào học nhé, Trâu Con sẽ lưu sao và tiến độ cho bạn.", nut: "Vào học qua cổng" },
     en: { tieuDe: "Please learn through Trường Tiếng Việt Của Em", nd: "This learning corner opens only inside Trường Tiếng Việt Của Em. Please sign in on the school portal to start learning, and Trâu Con will save your stars and progress.", nut: "Go to the school portal" }
   };
-  // Học thử (khách chưa đăng nhập): chỉ được học bài 1
+  // Học thử (khách chưa đăng nhập): chỉ được học một bài (bài thử của góc)
   var CHU_THU = {
-    vi: { tieuDe: "Bạn đã học thử xong bài 1!", nd: "Bạn đăng nhập để học tiếp các bài sau nhé. Trâu Con sẽ lưu sao và tiến độ cho bạn.", nut: "Đăng nhập để học tiếp", nut2: "Đăng ký" },
+    vi: { tieuDe: "Bạn đã học thử xong một bài!", nd: "Bạn đăng nhập để học tiếp các bài sau nhé. Trâu Con sẽ lưu sao và tiến độ cho bạn.", nut: "Đăng nhập để học tiếp", nut2: "Đăng ký" },
     en: { tieuDe: "You have finished the trial lesson!", nd: "Please sign in to keep learning the next lessons. Trâu Con will save your stars and progress.", nut: "Sign in to keep learning", nut2: "Sign up" }
   };
   var cheDoHoc = null;   // "hoc" | "thu" | null (chưa biết)
