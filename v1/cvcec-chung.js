@@ -423,11 +423,13 @@
     vi: { thieu: "Máy của bạn chưa có giọng đọc tiếng Việt, nên Trâu Con chưa đọc được.", cach: "Cách cài:",
           ipad: "iPad, iPhone: Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → Tiếng Việt.",
           android: "Android: Cài đặt → Ngôn ngữ → Chuyển văn bản thành giọng nói → Google → cài Tiếng Việt.",
+          mac: "iMac, MacBook: Cài đặt hệ thống → Trợ năng → Nội dung được đọc → Giọng hệ thống → Quản lý giọng → Tiếng Việt (Linh).",
           windows: "Windows: Cài đặt → Thời gian và ngôn ngữ → Giọng nói → Thêm giọng nói → Tiếng Việt.",
           dong: "Đã hiểu" },
     en: { thieu: "Your device does not have a Vietnamese voice yet, so Trâu Con cannot read aloud.", cach: "How to add one:",
           ipad: "iPad, iPhone: Settings → Accessibility → Spoken Content → Voices → Vietnamese.",
           android: "Android: Settings → Languages → Text-to-speech → Google → install Vietnamese.",
+          mac: "iMac, MacBook: System Settings → Accessibility → Spoken Content → System voice → Manage Voices → Vietnamese (Linh).",
           windows: "Windows: Settings → Time & language → Speech → Add voices → Vietnamese.",
           dong: "Got it" }
   };
@@ -467,7 +469,7 @@
     hop.appendChild(tao("p", "", c.cach)).style.margin = "0";
     var ul = tao("ul");
     ul.style.cssText = "margin:4px 0 10px;padding-left:20px";
-    [c.ipad, c.android, c.windows].forEach(function (t) { ul.appendChild(tao("li", "", t)); });
+    [c.ipad, c.mac, c.android, c.windows].forEach(function (t) { ul.appendChild(tao("li", "", t)); });
     hop.appendChild(ul);
     var nut = tao("button", "ttv-nut-phu", c.dong);
     nut.type = "button";
