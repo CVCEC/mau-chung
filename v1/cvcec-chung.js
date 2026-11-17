@@ -587,6 +587,7 @@
   window.TTV = {
     __daChay: true,
     giong: { coGiongViet: coGiongViet, doc: docChu, phat: phat, dung: dungDoc, tenChuCai: tenChuCai },
+    phat: phat,           // TTV.phat({ tep, chu }) – như README; TTV.giong.phat là cùng một hàm
     ghiKetQua: ghiKetQua,
     danhSach: TTV_DANH_SACH,
     banQuyen: TTV_BAN_QUYEN,
