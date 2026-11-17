@@ -56,6 +56,7 @@
 - Nhóm người học dùng chung mã: "5-8", "9-14", "nguoi-lon".
 - Bậc 0–2 có lời hướng dẫn tiếng Anh (nút VI/EN), Bậc 3 trở đi giảm dần.
 - Không đổi nội dung bài khi sắp xếp lại.
+
 ## Tài khoản và dữ liệu học
 - Chỉ người học có tài khoản và xem thành tích của mình (Góc học tập của em). Không làm chế độ, bảng theo dõi hay tài khoản riêng cho giáo viên, phụ huynh. Người dưới 13 tuổi do cha mẹ đăng ký và đồng ý (đã có ở cổng), nhưng không có trang theo dõi riêng cho cha mẹ.
 - Giáo viên chỉ có tab "Hoạt động" (gợi ý hoạt động trên lớp) của cổng; không làm thêm hướng dẫn giáo viên.
