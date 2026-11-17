@@ -56,7 +56,7 @@ Tạm dùng giọng máy của thiết bị khi chưa có tệp thu âm chuẩn.
 - `TTV.phat({ tep, chu })`: có tệp thì phát tệp; không có tệp, hoặc tệp lỗi, thì giọng máy đọc `chu`. Trả `Promise<boolean>`.
 - `TTV.giong.doc(chu, { toc: 0.85 })`: đọc bằng giọng máy (chậm, hiền). Câu tiếng Anh (lời hướng dẫn, giải nghĩa): `TTV.giong.doc(chu, { ngonNgu: "en" })`; máy không có giọng Anh thì im lặng. Máy chưa có giọng tiếng Việt thì hiện hướng dẫn cài (iPad, Android, Windows), mỗi trang một lần.
 - `TTV.giong.coGiongViet()`, `TTV.giong.dung()`, `TTV.giong.tenChuCai("b")` → "bờ" (đọc chữ cái theo âm).
-- Luôn gọi sau khi người học chạm (iPad chặn tự phát).
+- Luôn gọi sau khi người học chạm (iPad chặn tự phát). Bộ mẫu tự mở khoá giọng máy ở cú chạm đầu tiên của trang (`TTV.giong.moKhoa()`), nên lời đọc nối tiếp (ví dụ theo phụ đề) không bị chặn; trang không cần tự làm. Trang đã có thông báo riêng khi thiếu giọng thì truyền `{ baoThieu: false }` để không báo hai lần.
 
 Kịch bản thu âm: [`am-thanh/KICH-BAN-THU-AM.md`](am-thanh/KICH-BAN-THU-AM.md). Đợt 1 gồm 89 câu dùng chung; tệp đặt ở `am-thanh/chung/`.
 

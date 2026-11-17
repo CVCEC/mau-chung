@@ -540,6 +540,23 @@
       if (p && p.catch) p.catch(duPhong);
     });
   }
+  // iPad/iPhone chỉ cho giọng máy đọc khi lần đọc đầu tiên bắt đầu từ một cú chạm. Bộ mẫu tự "mở khoá"
+  // ở cú chạm đầu tiên của trang (một câu rỗng, âm lượng 0), để lời đọc sau đó (ví dụ theo phụ đề phim) không bị chặn.
+  var daMoKhoaGiong = false;
+  function moKhoaGiong() {
+    if (daMoKhoaGiong) return;
+    daMoKhoaGiong = true;
+    try {
+      if (!window.speechSynthesis || window.speechSynthesis.speaking) return;
+      var u = new SpeechSynthesisUtterance(" ");
+      u.volume = 0;
+      window.speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  try {
+    document.addEventListener("pointerdown", moKhoaGiong, { once: true, capture: true, passive: true });
+    document.addEventListener("keydown", moKhoaGiong, { once: true, capture: true, passive: true });
+  } catch (e) {}
   function tenChuCai(chu) {
     var k = String(chu || "").normalize("NFC").toLowerCase();
     return Object.prototype.hasOwnProperty.call(TEN_CHU_CAI, k) ? TEN_CHU_CAI[k] : k;
@@ -586,7 +603,7 @@
 
   window.TTV = {
     __daChay: true,
-    giong: { coGiongViet: coGiongViet, doc: docChu, phat: phat, dung: dungDoc, tenChuCai: tenChuCai },
+    giong: { coGiongViet: coGiongViet, doc: docChu, phat: phat, dung: dungDoc, tenChuCai: tenChuCai, moKhoa: moKhoaGiong },
     phat: phat,           // TTV.phat({ tep, chu }) – như README; TTV.giong.phat là cùng một hàm
     ghiKetQua: ghiKetQua,
     danhSach: TTV_DANH_SACH,
