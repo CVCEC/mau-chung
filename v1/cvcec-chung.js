@@ -553,9 +553,14 @@
       window.speechSynthesis.speak(u);
     } catch (e) {}
   }
+  // Trên màn cảm ứng, chỉ pointerup / touchend / click được tính là "người dùng chạm" (pointerdown thì không).
+  var SU_KIEN_MO_KHOA = ["pointerup", "touchend", "click", "keydown"];
+  function moKhoaLanDau() {
+    SU_KIEN_MO_KHOA.forEach(function (ev) { try { document.removeEventListener(ev, moKhoaLanDau, true); } catch (e) {} });
+    moKhoaGiong();
+  }
   try {
-    document.addEventListener("pointerdown", moKhoaGiong, { once: true, capture: true, passive: true });
-    document.addEventListener("keydown", moKhoaGiong, { once: true, capture: true, passive: true });
+    SU_KIEN_MO_KHOA.forEach(function (ev) { document.addEventListener(ev, moKhoaLanDau, { capture: true, passive: true }); });
   } catch (e) {}
   function tenChuCai(chu) {
     var k = String(chu || "").normalize("NFC").toLowerCase();
