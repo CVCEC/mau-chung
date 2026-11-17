@@ -400,8 +400,166 @@
     }
   }
 
+  // ------------------------------------------------------------------
+  // GIỌNG ĐỌC (từ 17-11-2026): tạm dùng giọng máy của thiết bị (speechSynthesis)
+  // cho tới khi có tệp thu âm chuẩn. TTV.phat({tep, chu}) phát tệp nếu có, không có
+  // hoặc lỗi thì đọc "chu" bằng giọng máy. Luôn gọi sau khi người học chạm (iPad chặn tự phát).
+  // ------------------------------------------------------------------
+  // Tên chữ cái đọc theo âm (quy tắc 5): đưa cho giọng máy chữ "bờ", không phải "b" (máy sẽ đọc "bê").
+  var TEN_CHU_CAI = {
+    "a": "a", "ă": "á", "â": "ớ", "b": "bờ", "c": "cờ", "d": "dờ", "đ": "đờ", "e": "e", "ê": "ê",
+    "g": "gờ", "h": "hờ", "i": "i", "k": "ca", "l": "lờ", "m": "mờ", "n": "nờ", "o": "o", "ô": "ô",
+    "ơ": "ơ", "p": "pờ", "q": "quờ", "r": "rờ", "s": "sờ", "t": "tờ", "u": "u", "ư": "ư", "v": "vờ",
+    "x": "xờ", "y": "i dài",
+    "ch": "chờ", "gh": "gờ", "gi": "di", "kh": "khờ", "ng": "ngờ", "ngh": "ngờ", "nh": "nhờ",
+    "ph": "phờ", "qu": "quờ", "th": "thờ", "tr": "trờ"
+  };
+  var CHU_GIONG = {
+    vi: { thieu: "Máy của bạn chưa có giọng đọc tiếng Việt, nên Trâu Con chưa đọc được.", cach: "Cách cài:",
+          ipad: "iPad, iPhone: Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → Tiếng Việt.",
+          android: "Android: Cài đặt → Ngôn ngữ → Chuyển văn bản thành giọng nói → Google → cài Tiếng Việt.",
+          windows: "Windows: Cài đặt → Thời gian và ngôn ngữ → Giọng nói → Thêm giọng nói → Tiếng Việt.",
+          dong: "Đã hiểu" },
+    en: { thieu: "Your device does not have a Vietnamese voice yet, so Trâu Con cannot read aloud.", cach: "How to add one:",
+          ipad: "iPad, iPhone: Settings → Accessibility → Spoken Content → Voices → Vietnamese.",
+          android: "Android: Settings → Languages → Text-to-speech → Google → install Vietnamese.",
+          windows: "Windows: Settings → Time & language → Speech → Add voices → Vietnamese.",
+          dong: "Got it" }
+  };
+  var giongViet = null, daBaoThieu = false, amDangPhat = null;
+  function timGiongViet() {
+    try {
+      if (!window.speechSynthesis) return null;
+      var ds = window.speechSynthesis.getVoices() || [], tot = null;
+      for (var i = 0; i < ds.length; i++) {
+        var l = (ds[i].lang || "").toLowerCase().replace("_", "-");
+        if (l === "vi-vn" || l === "vi") { if (!tot || (ds[i].localService && !tot.localService)) tot = ds[i]; }
+      }
+      return tot;
+    } catch (e) { return null; }
+  }
+  // Trả Promise<boolean>: thiết bị có giọng tiếng Việt không (danh sách giọng nạp chậm trên vài máy)
+  function coGiongViet() {
+    return new Promise(function (xong) {
+      giongViet = timGiongViet();
+      if (giongViet || !window.speechSynthesis) { xong(!!giongViet); return; }
+      var daXong = false;
+      var thu = function () { if (daXong) return; giongViet = timGiongViet(); if (giongViet) { daXong = true; xong(true); } };
+      try { window.speechSynthesis.addEventListener("voiceschanged", thu); } catch (e) {}
+      setTimeout(function () { if (!daXong) { daXong = true; giongViet = timGiongViet(); xong(!!giongViet); } }, 1500);
+    });
+  }
+  function baoThieuGiong() {
+    if (daBaoThieu || !document.body) return;
+    daBaoThieu = true;
+    var c = CHU_GIONG[ngonNgu] || CHU_GIONG.vi;
+    var hop = tao("div", "ttv-bao-giong");
+    hop.setAttribute("role", "alertdialog");
+    hop.setAttribute("aria-live", "polite");
+    hop.lang = ngonNgu;
+    hop.style.cssText = "position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483646;max-width:560px;margin:0 auto;box-sizing:border-box;background:var(--ttv-the,#FFFFFF);color:var(--ttv-chu,#003060);border:2px solid var(--ttv-vien,#F3E9D6);border-bottom:6px solid var(--ttv-sao,#F0B050);border-radius:24px;padding:16px 18px;font-family:var(--ttv-phong,sans-serif);font-size:15px;line-height:1.45";
+    hop.appendChild(tao("p", "", c.thieu)).style.cssText = "margin:0 0 6px;font-weight:800";
+    hop.appendChild(tao("p", "", c.cach)).style.margin = "0";
+    var ul = tao("ul");
+    ul.style.cssText = "margin:4px 0 10px;padding-left:20px";
+    [c.ipad, c.android, c.windows].forEach(function (t) { ul.appendChild(tao("li", "", t)); });
+    hop.appendChild(ul);
+    var nut = tao("button", "ttv-nut-phu", c.dong);
+    nut.type = "button";
+    nut.addEventListener("click", function () { if (hop.parentNode) hop.parentNode.removeChild(hop); });
+    hop.appendChild(nut);
+    document.body.appendChild(hop);
+  }
+  function dungDoc() {
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
+    if (amDangPhat) { try { amDangPhat.pause(); } catch (e) {} amDangPhat = null; }
+  }
+  // Đọc chữ tiếng Việt bằng giọng máy. tuyChon: { toc: 0.85 (chậm, hiền), baoThieu: true }
+  // Trả Promise<boolean>: true khi đọc xong, false khi không đọc được.
+  function docChu(chu, tuyChon) {
+    tuyChon = tuyChon || {};
+    chu = String(chu == null ? "" : chu).normalize("NFC").trim();
+    if (!chu) return Promise.resolve(false);
+    return coGiongViet().then(function (co) {
+      if (!co) { if (tuyChon.baoThieu !== false) baoThieuGiong(); return false; }
+      return new Promise(function (xong) {
+        try {
+          dungDoc();
+          var u = new SpeechSynthesisUtterance(chu);
+          u.lang = "vi-VN";
+          u.voice = giongViet;
+          u.rate = typeof tuyChon.toc === "number" ? tuyChon.toc : 0.85;
+          u.onend = function () { xong(true); };
+          u.onerror = function () { xong(false); };
+          window.speechSynthesis.speak(u);
+        } catch (e) { xong(false); }
+      });
+    });
+  }
+  // Phát tệp giọng chuẩn nếu có; không có hoặc lỗi thì đọc bằng giọng máy.
+  // muc: { tep: "đường dẫn .mp3" (không bắt buộc), chu: "chữ để giọng máy đọc" }
+  function phat(muc, tuyChon) {
+    muc = typeof muc === "string" ? { chu: muc } : (muc || {});
+    if (!muc.tep) return docChu(muc.chu, tuyChon);
+    return new Promise(function (xong) {
+      dungDoc();
+      var am = new Audio(muc.tep);
+      amDangPhat = am;
+      var duPhong = function () { if (amDangPhat === am) amDangPhat = null; docChu(muc.chu, tuyChon).then(xong); };
+      am.onended = function () { if (amDangPhat === am) amDangPhat = null; xong(true); };
+      am.onerror = duPhong;
+      var p = am.play();
+      if (p && p.catch) p.catch(duPhong);
+    });
+  }
+  function tenChuCai(chu) {
+    var k = String(chu || "").normalize("NFC").toLowerCase();
+    return Object.prototype.hasOwnProperty.call(TEN_CHU_CAI, k) ? TEN_CHU_CAI[k] : k;
+  }
+
+  // ------------------------------------------------------------------
+  // GHI KẾT QUẢ HỌC (từ 17-11-2026): góc học gọi TTV.ghiKetQua(...) khi người học chơi xong
+  // một trò. Bộ mẫu gửi kết quả lên cổng (chỉ tới vietclass.cvcec.org); cổng ghi vào tài khoản
+  // của người học (Firebase). Khách học thử hoặc trang không nằm trong cổng: không gửi gì.
+  // Không tạo khoá localStorage nào ở trang góc học.
+  // ------------------------------------------------------------------
+  function maSach(s, toiDa) {
+    s = String(s == null ? "" : s).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D")
+      .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    return s.slice(0, toiDa);
+  }
+  function soNguyen(v, tu, den) {
+    v = Math.round(Number(v));
+    if (!isFinite(v)) v = tu;
+    return Math.max(tu, Math.min(den, v));
+  }
+  // kq: { bai, hoatDong, soTroChoi, diem, diemToiDa, sao (0–3), thoiGianGiay, xong (true khi chơi hết trò) }
+  function ghiKetQua(kq) {
+    kq = kq || {};
+    var muc = gocHienTai();
+    if (!muc || !trongKhung || cheDoHoc !== "hoc") return false;
+    var bai = maSach(kq.bai, 40), hd = maSach(kq.hoatDong, 40);
+    if (!bai || !hd) return false;
+    var diemToiDa = soNguyen(kq.diemToiDa, 0, 1000);
+    var tin = {
+      loai: "ttv-ket-qua",
+      chuongTrinh: muc.id,
+      bai: bai,
+      hoatDong: hd,
+      soTroChoi: soNguyen(kq.soTroChoi || 1, 1, 50),
+      diemToiDa: diemToiDa,
+      diem: soNguyen(kq.diem, 0, diemToiDa),
+      sao: soNguyen(kq.sao, 0, 3),
+      thoiGianGiay: soNguyen(kq.thoiGianGiay, 0, 7200),
+      ketQua: kq.xong === false ? "chua-xong" : "hoan-thanh"
+    };
+    try { window.parent.postMessage(tin, CONG); return true; } catch (e) { return false; }
+  }
+
   window.TTV = {
     __daChay: true,
+    giong: { coGiongViet: coGiongViet, doc: docChu, phat: phat, dung: dungDoc, tenChuCai: tenChuCai },
+    ghiKetQua: ghiKetQua,
     danhSach: TTV_DANH_SACH,
     banQuyen: TTV_BAN_QUYEN,
     goc: function (id) {
