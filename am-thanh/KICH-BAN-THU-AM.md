@@ -160,4 +160,5 @@ Mỗi góc học tự giữ danh sách câu của mình. Thứ tự ưu tiên th
 | 5 | Truyện cổ tích (truyencotich) | 3–4 | `AM-THANH.md` (290 tệp) | Chưa có tệp; giọng máy dự phòng |
 | – | Bài học cuộc sống (baihoccuocsong) | 3–4 | – | Đã có giọng cô Hà |
 | – | Về Nhà Em (venhaem) | 2 | `giong-ai/can-doc.tsv` | Đã có 129/129 tệp giọng AI; có thể thay bằng giọng người sau |
+| – | Vui học – thẻ "Mở rộng 15+" (vuihoctiengviet) | 1–2 | `quyen-N/bai-NN/mo-rong.js`: câu chưa có trong `MO_RONG.tep` | Bài 1 (17-11-2026): câu trùng chữ dùng tệp có sẵn của sách / giọng AI; 11 câu còn lại tạm đọc bằng giọng máy |
 | – | Tiếng Việt cơ bản, Văn hoá, Vui học, Ngữ pháp | 0–4 | – | Chưa rà phần âm thanh; sẽ bổ sung |

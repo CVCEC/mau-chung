@@ -475,8 +475,14 @@
     hop.appendChild(nut);
     document.body.appendChild(hop);
   }
+  // uMoKhoa: câu rỗng mở khoá giọng máy ở cú chạm đầu (xem moKhoaGiong). Không huỷ câu này ngay trước
+  // một câu thật: trên iPad, cancel() rồi speak() liền nhau thì câu thật hay bị nuốt mất (không ra tiếng).
+  var uMoKhoa = null;
   function dungDoc() {
-    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
+    try {
+      var S = window.speechSynthesis;
+      if (S && !uMoKhoa && (S.speaking || S.pending)) S.cancel();
+    } catch (e) {}
     if (amDangPhat) { try { amDangPhat.pause(); } catch (e) {} amDangPhat = null; }
   }
   // Giọng máy tiếng Anh (lời hướng dẫn, giải nghĩa cho người mới học). Không có thì im lặng, không báo.
@@ -513,20 +519,36 @@
     chu = String(chu == null ? "" : chu).normalize("NFC").trim();
     if (!chu) return Promise.resolve(false);
     if (tuyChon.ngonNgu === "en") return docTiengAnh(chu, tuyChon);
+    if (!window.speechSynthesis) { if (tuyChon.baoThieu !== false) baoThieuGiong(); return Promise.resolve(false); }
+    // Đọc NGAY trong cú chạm (iPad chặn giọng máy nếu speak() chạy sau khi chờ). Danh sách giọng có khi
+    // còn rỗng (iPad, trong khung iframe): vẫn đọc với lang "vi-VN", máy tự chọn giọng Việt nếu đã cài.
+    var ds = [];
+    try { ds = window.speechSynthesis.getVoices() || []; } catch (e) {}
+    if (!giongViet) giongViet = timGiongViet();
+    if (giongViet || !ds.length) return docGiongViet(chu, tuyChon);
     return coGiongViet().then(function (co) {
       if (!co) { if (tuyChon.baoThieu !== false) baoThieuGiong(); return false; }
-      return new Promise(function (xong) {
-        try {
-          dungDoc();
-          var u = new SpeechSynthesisUtterance(chu);
-          u.lang = "vi-VN";
-          u.voice = giongViet;
-          u.rate = typeof tuyChon.toc === "number" ? tuyChon.toc : 0.85;
-          u.onend = function () { xong(true); };
-          u.onerror = function () { xong(false); };
-          window.speechSynthesis.speak(u);
-        } catch (e) { xong(false); }
-      });
+      return docGiongViet(chu, tuyChon);
+    });
+  }
+  function docGiongViet(chu, tuyChon) {
+    return new Promise(function (xong) {
+      var daXong = false, batDau = false;
+      var ket = function (ok) { if (!daXong) { daXong = true; xong(ok); } };
+      try {
+        dungDoc();
+        var u = new SpeechSynthesisUtterance(chu);
+        u.lang = "vi-VN";
+        if (giongViet) u.voice = giongViet;
+        u.rate = typeof tuyChon.toc === "number" ? tuyChon.toc : 0.85;
+        u.onstart = function () { batDau = true; };
+        u.onend = function () { ket(true); };
+        u.onerror = function () { ket(false); };
+        window.speechSynthesis.speak(u);
+        // Máy không đọc mà cũng không báo lỗi (hay gặp trên iPad): không để vòng đọc nhiều câu bị treo.
+        setTimeout(function () { if (!batDau && !window.speechSynthesis.speaking) ket(false); }, 2500);
+        setTimeout(function () { ket(batDau); }, 4000 + chu.length * 250);
+      } catch (e) { ket(false); }
     });
   }
   // Phát tệp giọng chuẩn nếu có; không có hoặc lỗi thì đọc bằng giọng máy.
@@ -555,7 +577,11 @@
       if (!window.speechSynthesis || window.speechSynthesis.speaking) return;
       var u = new SpeechSynthesisUtterance(" ");
       u.volume = 0;
+      uMoKhoa = u;
+      u.onend = u.onerror = function () { if (uMoKhoa === u) uMoKhoa = null; };
+      setTimeout(function () { if (uMoKhoa === u) uMoKhoa = null; }, 1500);
       window.speechSynthesis.speak(u);
+      try { giongViet = giongViet || timGiongViet(); } catch (e) {}
     } catch (e) {}
   }
   // Trên màn cảm ứng, chỉ pointerup / touchend / click được tính là "người dùng chạm" (pointerdown thì không).
@@ -566,6 +592,13 @@
   }
   try {
     SU_KIEN_MO_KHOA.forEach(function (ev) { document.addEventListener(ev, moKhoaLanDau, { capture: true, passive: true }); });
+  } catch (e) {}
+  // Nạp sẵn danh sách giọng để lần chạm đầu tiên đã biết máy có giọng Việt hay chưa.
+  try {
+    if (window.speechSynthesis) {
+      giongViet = timGiongViet();
+      window.speechSynthesis.addEventListener("voiceschanged", function () { giongViet = timGiongViet() || giongViet; });
+    }
   } catch (e) {}
   function tenChuCai(chu) {
     var k = String(chu || "").normalize("NFC").toLowerCase();
