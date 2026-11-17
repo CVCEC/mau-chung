@@ -154,7 +154,7 @@ Mỗi góc học tự giữ danh sách câu của mình. Thứ tự ưu tiên th
 | Thứ tự | Góc học (kho) | Bậc | Danh sách câu | Hiện trạng (17-11-2026) |
 |---|---|---|---|---|
 | 1 | Luyện nói – Luyện thanh (cong-truong-tieng-viet, `luyen-noi/`) | 0–3 | `luyen-noi/noi-dung.txt`: 24 chủ đề × 8 từ, 5 câu, 1 hội thoại; Bảng âm | Giọng mẫu tạo ở `luyen-noi/studio.html`; tệp chưa có |
-| 2 | Hát cùng Trâu Con (hatca) | 1–3 | `AM-THANH.md` (11 tệp của bài "Dung dăng dung dẻ") | Chưa có tệp; 23 bài còn lại chưa soạn |
+| 2 | Hát cùng Trâu Con (hatca) | 1–3 | `AM-THANH.md` (187 tệp cho 24 bài; dân ca, hát ru cần giọng hát thật) | Chưa có tệp; lời cần CVCEC soát trước khi thu (README của kho) |
 | 3 | Kho báu ca dao, tục ngữ (khobautiengviet) | 2–4 | 60 câu trong `data.js` (tệp `audio/<mã câu>.mp3`) | Chưa có tệp; đang dùng giọng máy |
 | 4 | Khám phá Việt Nam (khampha-vietnam) | 1–3 | `js/phrases.js`, `js/video-manifest.js` | Chưa có tệp; giọng máy dự phòng |
 | 5 | Truyện cổ tích (truyencotich) | 3–4 | `AM-THANH.md` (290 tệp) | Chưa có tệp; giọng máy dự phòng |

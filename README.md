@@ -105,7 +105,7 @@ Trang nào có tên miền nằm trong `TTV_DANH_SACH` (các góc học) chỉ c
 `logo.png` và 8 ảnh Trâu Con chính thức (chép từ CVCEC/khobautiengviet): `trau-wave`, `trau-cheer`, `trau-hiking`,
 `trau-reading`, `trau-thinking`, `trau-thumbs-up`, `trau-listening`, `trau-peeking`. Không vẽ lại, không kéo méo
 (luôn để `width:auto` hoặc `height:auto`).
-`assets/cvcec-logo.png` – chỗ dành cho logo CVCEC, sẽ tải lên sau.
+`assets/cvcec-logo.png` – logo CVCEC (đã tải lên 14-11-2026). Ngoài ra có `trau-pointing.png`, `trau-flag.png`.
 
 ## Quy tắc phiên bản
 
