@@ -39,6 +39,9 @@
     { id: "cuocsong", ten_vi: "Bài học cuộc sống", ten_en: "Life Lessons", ngan_vi: "Cuộc sống", ngan_en: "Life Lessons",
       mo_ta_vi: "Thơ Lên Sáu, Lên Tám của Tản Đà: nghe cô Hà giảng, học làm người", mo_ta_en: "Tản Đà's poems Lên Sáu and Lên Tám: listen to cô Hà and learn life lessons",
       url: "https://cuocsong.cvcec.org/", mau: "#8FA032", mau_dam: "#4E5A14", mau_nhat: "#EFF3DA", trau: "trau-wave.png" },
+    { id: "nguphap", ten_vi: "Ngữ pháp tiếng Việt", ten_en: "Vietnamese Grammar", ngan_vi: "Ngữ pháp", ngan_en: "Grammar",
+      mo_ta_vi: "Từ, cụm từ, câu và hội thoại: 37 bài nâng cao", mo_ta_en: "Words, phrases, sentences and conversation: 37 advanced lessons",
+      url: "https://nguphap.cvcec.org/", mau: "#5868D0", mau_dam: "#2F3D96", mau_nhat: "#E6E9FA", trau: "trau-thinking.png" },
     // Góc nằm trong cổng vietclass.cvcec.org: "chiDuong" bắt buộc khớp đường dẫn, để các trang khác của cổng không bị coi là góc học
     { id: "luyennoi", ten_vi: "Luyện nói", ten_en: "Speaking Practice", ngan_vi: "Luyện nói", ngan_en: "Speaking",
       mo_ta_vi: "Luyện thanh, từ, câu và nói chuyện cùng Trâu Con theo 4 mức", mo_ta_en: "Practise tones, words and sentences, and talk with Trâu Con at 4 levels",
