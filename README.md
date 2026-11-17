@@ -11,7 +11,7 @@ Xem thử: https://mau.cvcec.org
 ```
 
 Bộ mẫu tự làm:
-- Chèn **thanh tab** đầu `<body>`: logo (về https://vietclass.cvcec.org), 8 góc học, nút VI/EN. Tab của trang hiện tại được tô màu theo `location.hostname` (xem mục "Hai góc học chung một tên miền").
+- Chèn **thanh tab** đầu `<body>`: logo (về https://vietclass.cvcec.org), các góc học trong `TTV_DANH_SACH`, nút VI/EN. Tab của trang hiện tại được tô màu theo `location.hostname` (xem mục "Hai góc học chung một tên miền").
 - Chèn **chân trang** có dòng "Copyrighted by CVCEC Trường Tiếng Việt Của Em 2026".
 - Gán màu của góc học hiện tại vào `--ttv-goc`, `--ttv-goc-dam`, `--ttv-goc-nhat` trên `<html>`.
 - Vẽ trời – mây – mặt trời – ruộng bậc thang vào mọi phần tử `.ttv-canh`.
@@ -48,6 +48,10 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 - `window.TTV`: `goc(id)`, `gocHienTai()`, `anh("trau-wave.png")`, `ngonNgu()`, `datNgonNgu("vi"|"en")`, `taoTheGoc(muc)`, `trangTriCanh()`.
 - Sự kiện `document` → `"ttv-ngon-ngu"` (`event.detail.ngonNgu`) khi bé bấm VI/EN.
 - Khoá localStorage duy nhất bộ mẫu dùng: `ttv-ngon-ngu`. Bộ mẫu không đụng tới khoá nào khác.
+
+## Góc học nằm trong cổng (từ 16-11-2026)
+
+Góc **Luyện nói** (`id: "luyennoi"`) nằm ngay trong cổng: https://vietclass.cvcec.org/luyen-noi/. Mục này có thêm `chiDuong: "^/luyen-noi(/|$)"`: một trang chỉ được coi là góc học khi đường dẫn khớp `chiDuong`. Nhờ vậy trang chủ, Học tập, Đăng nhập… của cổng (cùng tên miền) không bị coi là góc học và không bị che.
 
 ## Hai góc học chung một tên miền (từ 16-11-2026)
 
