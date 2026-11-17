@@ -49,6 +49,31 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 - Sự kiện `document` → `"ttv-ngon-ngu"` (`event.detail.ngonNgu`) khi bé bấm VI/EN.
 - Khoá localStorage duy nhất bộ mẫu dùng: `ttv-ngon-ngu`. Bộ mẫu không đụng tới khoá nào khác.
 
+## Giọng đọc (từ 17-11-2026)
+
+Tạm dùng giọng máy của thiết bị khi chưa có tệp thu âm chuẩn. Trang không gọi speechSynthesis trực tiếp mà dùng:
+
+- `TTV.phat({ tep, chu })`: có tệp thì phát tệp; không có tệp, hoặc tệp lỗi, thì giọng máy đọc `chu`. Trả `Promise<boolean>`.
+- `TTV.giong.doc(chu, { toc: 0.85 })`: đọc bằng giọng máy (chậm, hiền). Máy chưa có giọng tiếng Việt thì hiện hướng dẫn cài (iPad, Android, Windows), mỗi trang một lần.
+- `TTV.giong.coGiongViet()`, `TTV.giong.dung()`, `TTV.giong.tenChuCai("b")` → "bờ" (đọc chữ cái theo âm).
+- Luôn gọi sau khi người học chạm (iPad chặn tự phát).
+
+Kịch bản thu âm: [`am-thanh/KICH-BAN-THU-AM.md`](am-thanh/KICH-BAN-THU-AM.md). Đợt 1 gồm 89 câu dùng chung; tệp đặt ở `am-thanh/chung/`.
+
+## Ghi kết quả học (từ 17-11-2026)
+
+Khi người học chơi xong một trò, góc học gọi:
+
+```js
+TTV.ghiKetQua({ bai: "bai-12", hoatDong: "g3", soTroChoi: 11, diem: 8, diemToiDa: 10, sao: 2, thoiGianGiay: 95 });
+```
+
+Bộ mẫu gửi kết quả lên cổng, chỉ tới vietclass.cvcec.org. Cổng ghi vào tài khoản của người học. Khách học thử, hoặc trang không nằm trong cổng, thì không gửi gì (hàm trả `false`). Góc học không tự ghi vào Firebase và không cần khoá localStorage mới. Mã bài: xem [`LO-TRINH.md`](LO-TRINH.md).
+
+## Lộ trình học (từ 17-11-2026)
+
+`<script src="https://mau.cvcec.org/v1/ttv-lo-trinh.js" defer></script>` → `window.TTV_LO_TRINH`: các bậc (0–4), câu "Mình làm được…", chủ điểm, nhãn bậc của từng bài, `nhanCuaBai(goc, maBai)`, `soBaiTheoBac()`. Tóm tắt: [`LO-TRINH.md`](LO-TRINH.md).
+
 ## Góc học nằm trong cổng (từ 16-11-2026)
 
 Góc **Luyện nói – Luyện thanh** (`id: "luyennoi"`) nằm ngay trong cổng: https://vietclass.cvcec.org/luyen-noi/. Mục này có thêm `chiDuong: "^/luyen-noi(/|$)"`: một trang chỉ được coi là góc học khi đường dẫn khớp `chiDuong`. Nhờ vậy trang chủ, Học tập, Đăng nhập… của cổng (cùng tên miền) không bị coi là góc học và không bị che.

@@ -1,0 +1,90 @@
+stt,nhom,ten_tep,chu_can_doc,ghi_chu,bac
+1,Phản hồi,chung/dung-roi.mp3,Đúng rồi!,"vui, sáng",0
+2,Phản hồi,chung/gioi-lam.mp3,Giỏi lắm!,vui,0
+3,Phản hồi,chung/tuyet-voi.mp3,Tuyệt vời!,vui,0
+4,Phản hồi,chung/ban-lam-duoc-roi.mp3,Bạn làm được rồi!,vui,0
+5,Phản hồi,chung/thu-lai-nhe.mp3,Thử lại nhé.,"nhẹ nhàng, động viên, không chê",0
+6,Phản hồi,chung/gan-dung-roi.mp3,"Gần đúng rồi, thử lại nhé.",nhẹ nhàng,0
+7,Phản hồi,chung/mot-ngoi-sao.mp3,Bạn được một ngôi sao!,,0
+8,Phản hồi,chung/hai-ngoi-sao.mp3,Bạn được hai ngôi sao!,,0
+9,Phản hồi,chung/ba-ngoi-sao.mp3,Bạn được ba ngôi sao!,vui hơn,0
+10,Phản hồi,chung/xong-bai.mp3,Bạn học xong bài này rồi. Giỏi quá!,,0
+11,Lời dẫn của Trâu Con,chung/chao.mp3,Chào các bạn! Mình là Trâu Con.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+12,Lời dẫn của Trâu Con,chung/hom-nay-hoc-gi.mp3,Hôm nay các bạn muốn học gì nào?,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+13,Lời dẫn của Trâu Con,chung/bat-dau.mp3,Bắt đầu nào!,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+14,Lời dẫn của Trâu Con,chung/nghe-va-chon.mp3,Các bạn nghe rồi chọn đúng nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+15,Lời dẫn của Trâu Con,chung/nghe-lai.mp3,Các bạn nghe lại nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+16,Lời dẫn của Trâu Con,chung/doc-theo.mp3,Các bạn đọc theo mình nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+17,Lời dẫn của Trâu Con,chung/cham-vao-tranh.mp3,Các bạn chạm vào tranh nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+18,Lời dẫn của Trâu Con,chung/keo-the.mp3,Các bạn kéo thẻ vào đúng chỗ nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+19,Lời dẫn của Trâu Con,chung/noi-tu-voi-tranh.mp3,Các bạn nối từ với tranh nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+20,Lời dẫn của Trâu Con,chung/xep-cau.mp3,Các bạn xếp các từ thành câu nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+21,Lời dẫn của Trâu Con,chung/noi-ca-cau.mp3,Các bạn nói cả câu nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+22,Lời dẫn của Trâu Con,chung/viet-vao-o.mp3,Các bạn viết chữ vào ô nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+23,Lời dẫn của Trâu Con,chung/hoc-tiep.mp3,Mình học tiếp nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+24,Lời dẫn của Trâu Con,chung/nghi-mot-chut.mp3,Các bạn nghỉ một chút rồi học tiếp nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+25,Lời dẫn của Trâu Con,chung/tam-biet.mp3,Tạm biệt các bạn! Hẹn gặp lại nhé.,"hiền, ấm, chậm; Trâu Con xưng ""mình"", gọi ""các bạn""",0
+26,Chữ cái (đọc theo âm),chung/chu-a.mp3,a,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+27,Chữ cái (đọc theo âm),chung/chu-a-trang.mp3,á,"chữ ă; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+28,Chữ cái (đọc theo âm),chung/chu-a-mu.mp3,ớ,"chữ â; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+29,Chữ cái (đọc theo âm),chung/chu-b.mp3,bờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+30,Chữ cái (đọc theo âm),chung/chu-c.mp3,cờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+31,Chữ cái (đọc theo âm),chung/chu-d.mp3,dờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+32,Chữ cái (đọc theo âm),chung/chu-dd.mp3,đờ,"chữ đ; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+33,Chữ cái (đọc theo âm),chung/chu-e.mp3,e,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+34,Chữ cái (đọc theo âm),chung/chu-e-mu.mp3,ê,"chữ ê; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+35,Chữ cái (đọc theo âm),chung/chu-g.mp3,gờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+36,Chữ cái (đọc theo âm),chung/chu-h.mp3,hờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+37,Chữ cái (đọc theo âm),chung/chu-i.mp3,i,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+38,Chữ cái (đọc theo âm),chung/chu-k.mp3,ca,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+39,Chữ cái (đọc theo âm),chung/chu-l.mp3,lờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+40,Chữ cái (đọc theo âm),chung/chu-m.mp3,mờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+41,Chữ cái (đọc theo âm),chung/chu-n.mp3,nờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+42,Chữ cái (đọc theo âm),chung/chu-o.mp3,o,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+43,Chữ cái (đọc theo âm),chung/chu-o-mu.mp3,ô,"chữ ô; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+44,Chữ cái (đọc theo âm),chung/chu-o-rau.mp3,ơ,"chữ ơ; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+45,Chữ cái (đọc theo âm),chung/chu-p.mp3,pờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+46,Chữ cái (đọc theo âm),chung/chu-q.mp3,quờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+47,Chữ cái (đọc theo âm),chung/chu-r.mp3,rờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+48,Chữ cái (đọc theo âm),chung/chu-s.mp3,sờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+49,Chữ cái (đọc theo âm),chung/chu-t.mp3,tờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+50,Chữ cái (đọc theo âm),chung/chu-u.mp3,u,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+51,Chữ cái (đọc theo âm),chung/chu-u-rau.mp3,ư,"chữ ư; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+52,Chữ cái (đọc theo âm),chung/chu-v.mp3,vờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+53,Chữ cái (đọc theo âm),chung/chu-x.mp3,xờ,"đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+54,Chữ cái (đọc theo âm),chung/chu-y.mp3,i dài,"chữ y; đọc theo âm, KHÔNG đọc tên kiểu ""bê, xê""",0
+55,Phụ âm ghép (đọc theo âm),chung/chu-ch.mp3,chờ,đọc theo âm,0
+56,Phụ âm ghép (đọc theo âm),chung/chu-gh.mp3,gờ,gờ ghép (gh); đọc theo âm,0
+57,Phụ âm ghép (đọc theo âm),chung/chu-gi.mp3,di,chữ gi; đọc theo âm,0
+58,Phụ âm ghép (đọc theo âm),chung/chu-kh.mp3,khờ,đọc theo âm,0
+59,Phụ âm ghép (đọc theo âm),chung/chu-ng.mp3,ngờ,đọc theo âm,0
+60,Phụ âm ghép (đọc theo âm),chung/chu-ngh.mp3,ngờ,ngờ ghép (ngh); đọc theo âm,0
+61,Phụ âm ghép (đọc theo âm),chung/chu-nh.mp3,nhờ,đọc theo âm,0
+62,Phụ âm ghép (đọc theo âm),chung/chu-ph.mp3,phờ,đọc theo âm,0
+63,Phụ âm ghép (đọc theo âm),chung/chu-qu.mp3,quờ,đọc theo âm,0
+64,Phụ âm ghép (đọc theo âm),chung/chu-th.mp3,thờ,đọc theo âm,0
+65,Phụ âm ghép (đọc theo âm),chung/chu-tr.mp3,trờ,đọc theo âm,0
+66,Thanh điệu,chung/thanh-ma.mp3,ma,thanh ngang,0
+67,Thanh điệu,chung/thanh-ma-huyen.mp3,mà,thanh huyền,0
+68,Thanh điệu,chung/thanh-ma-sac.mp3,má,thanh sắc,0
+69,Thanh điệu,chung/thanh-ma-hoi.mp3,mả,thanh hỏi,0
+70,Thanh điệu,chung/thanh-ma-nga.mp3,mã,thanh ngã,0
+71,Thanh điệu,chung/thanh-ma-nang.mp3,mạ,thanh nặng,0
+72,Thanh điệu,chung/thanh-chuoi-6-thanh.mp3,"ma, mà, má, mả, mã, mạ","đọc chậm, nghỉ rõ giữa các tiếng",0
+73,Thanh điệu,chung/thanh-ten-thanh-ngang.mp3,thanh ngang,,0
+74,Thanh điệu,chung/thanh-ten-dau-huyen.mp3,dấu huyền,,0
+75,Thanh điệu,chung/thanh-ten-dau-sac.mp3,dấu sắc,,0
+76,Thanh điệu,chung/thanh-ten-dau-hoi.mp3,dấu hỏi,,0
+77,Thanh điệu,chung/thanh-ten-dau-nga.mp3,dấu ngã,,0
+78,Thanh điệu,chung/thanh-ten-dau-nang.mp3,dấu nặng,,0
+79,Số đếm,chung/so-0.mp3,không,,1
+80,Số đếm,chung/so-1.mp3,một,,1
+81,Số đếm,chung/so-2.mp3,hai,,1
+82,Số đếm,chung/so-3.mp3,ba,,1
+83,Số đếm,chung/so-4.mp3,bốn,,1
+84,Số đếm,chung/so-5.mp3,năm,,1
+85,Số đếm,chung/so-6.mp3,sáu,,1
+86,Số đếm,chung/so-7.mp3,bảy,,1
+87,Số đếm,chung/so-8.mp3,tám,,1
+88,Số đếm,chung/so-9.mp3,chín,,1
+89,Số đếm,chung/so-10.mp3,mười,,1
