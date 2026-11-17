@@ -39,6 +39,9 @@
     { id: "cuocsong", ten_vi: "Bài học cuộc sống", ten_en: "Life Lessons", ngan_vi: "Cuộc sống", ngan_en: "Life Lessons",
       mo_ta_vi: "Thơ Lên Sáu, Lên Tám của Tản Đà: nghe cô Hà giảng, học làm người", mo_ta_en: "Tản Đà's poems Lên Sáu and Lên Tám: listen to cô Hà and learn life lessons",
       url: "https://cuocsong.cvcec.org/", mau: "#8FA032", mau_dam: "#4E5A14", mau_nhat: "#EFF3DA", trau: "trau-wave.png" },
+    { id: "nguphap", ten_vi: "Ngữ pháp tiếng Việt", ten_en: "Vietnamese Grammar", ngan_vi: "Ngữ pháp", ngan_en: "Grammar",
+      mo_ta_vi: "Từ, cụm từ, câu và hội thoại: 37 bài nâng cao", mo_ta_en: "Words, phrases, sentences and conversation: 37 advanced lessons",
+      url: "https://nguphap.cvcec.org/", mau: "#5868D0", mau_dam: "#2F3D96", mau_nhat: "#E6E9FA", trau: "trau-thinking.png" },
     { id: "trienlam", ten_vi: "Triển lãm Em học tiếng Việt", ten_en: "Student Exhibition", ngan_vi: "Triển lãm", ngan_en: "Exhibition",
       mo_ta_vi: "Bài đọc và chữ viết của các bạn nhỏ", mo_ta_en: "Reading and handwriting from our young learners",
       url: "https://trienlam.cvcec.org/", mau: "#EE6F9C", mau_dam: "#B0305E", mau_nhat: "#FCE3EC", trau: "trau-listening.png" }
