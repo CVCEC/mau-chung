@@ -3,7 +3,10 @@
 Đọc tệp này trước khi sửa bất kỳ trang nào của trường. Trả lời và viết commit bằng tiếng Việt.
 
 ## Bối cảnh
-- Chương trình "Trường Tiếng Việt Của Em" của CVCEC – Canada Vietnam Cultural & Educational Council: nền tảng học tiếng Việt và văn hoá trên web, miễn phí, cho mọi lứa tuổi từ trẻ 5 tuổi tới người lớn. Người học chủ yếu là người nước ngoài và trẻ Việt kiều chưa nói được tiếng Việt (bắt đầu từ số 0). Phần lớn học trên iPad và điện thoại. CVCEC tự xây dựng và quản lý toàn bộ.
+- Chương trình "Trường Tiếng Việt Của Em" của CVCEC – Canada Vietnam Cultural & Educational Council: lớp tiếng Việt và văn hoá Việt trên web, dự án phi lợi nhuận. CVCEC tự xây dựng và quản lý toàn bộ.
+- Người học: từ trẻ em tới người lớn; nhóm chính là người nước ngoài học tiếng Việt, cùng con em người Việt ở nước ngoài. Phần lớn học trên iPad và điện thoại.
+- Chương trình tham chiếu Khung năng lực tiếng Việt dùng cho người nước ngoài (6 bậc, tương đương CEFR A1–C2), ban hành kèm theo Thông tư số 17/2015/TT-BGDĐT ngày 01/9/2015 của Bộ trưởng Bộ Giáo dục và Đào tạo. Chỉ ghi "tham chiếu"; không ghi "đạt chuẩn" hay "được công nhận".
+- Triết lý: "Tiên học lễ, hậu học văn" (thơ "Lên Sáu", "Lên Tám" của Tản Đà) và "Nhập gia tùy tục": học tiếng đi cùng yêu người Việt, trân trọng văn hoá Việt.
 - Cổng chính: https://vietclass.cvcec.org (kho CVCEC/cong-truong-tieng-viet), nhúng từng góc học trong khung iframe.
 
 ## Các trang (GitHub Pages, DNS tại Nhân Hòa, tên miền cvcec.org đã xác minh với GitHub)
@@ -40,6 +43,7 @@
 9. Không hiện tên trẻ, phụ huynh. Triển lãm và Về Nhà Em chỉ để xem (hạn chế tải về) và có ghi chú điều khoản sử dụng, liên hệ contact@cvcec.org.
 10. Mỗi trang tối đa 1 GB; mỗi tệp dưới 25 MB. Hỏi tôi trước khi thêm video mới.
 11. Dùng tốt ở iPad (1024px) và điện thoại (390px); vùng chạm tối thiểu 44px.
+12. Người học nhiều lứa tuổi: lời hướng dẫn trung tính về tuổi, hợp cả trẻ em và người lớn; Trâu Con vẫn xưng "mình", gọi người học là "các bạn". Góc dành cho trẻ nhỏ giữ giọng thân thiện với trẻ; góc dành cho người lớn (ví dụ Về Nhà Em) dùng giọng người lớn. Những phần chính có giải thích tiếng Anh (nút EN) cho người nước ngoài. Vẫn giữ quy tắc bảo vệ trẻ em (không hiện tên trẻ, không thu thập dữ liệu thừa; theo hướng dẫn của Văn phòng Ủy viên Quyền riêng tư Canada – OPC về quyền riêng tư của trẻ em) vì trẻ em vẫn là một nhóm người học.
 
 ## Lộ trình học (từ 17-11-2026)
 - Mọi góc học đi theo một lộ trình chung "Đường làng của Trâu Con", đối chiếu Khung năng lực tiếng Việt dùng cho người nước ngoài (TT 17/2015/TT-BGDĐT): Bậc 0 Làm quen (chặng riêng của trường), Sơ cấp Bậc 1–2, Trung cấp Bậc 3–4. Không gọi là chứng chỉ.
