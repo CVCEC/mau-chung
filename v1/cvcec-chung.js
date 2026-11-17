@@ -43,8 +43,8 @@
       mo_ta_vi: "Từ, cụm từ, câu và hội thoại: 37 bài nâng cao", mo_ta_en: "Words, phrases, sentences and conversation: 37 advanced lessons",
       url: "https://nguphap.cvcec.org/", mau: "#5868D0", mau_dam: "#2F3D96", mau_nhat: "#E6E9FA", trau: "trau-thinking.png" },
     // Góc nằm trong cổng vietclass.cvcec.org: "chiDuong" bắt buộc khớp đường dẫn, để các trang khác của cổng không bị coi là góc học
-    { id: "luyennoi", ten_vi: "Luyện nói", ten_en: "Speaking Practice", ngan_vi: "Luyện nói", ngan_en: "Speaking",
-      mo_ta_vi: "Luyện thanh, từ, câu và nói chuyện cùng Trâu Con theo 4 mức", mo_ta_en: "Practise tones, words and sentences, and talk with Trâu Con at 4 levels",
+    { id: "luyennoi", ten_vi: "Luyện nói – Luyện thanh", ten_en: "Speaking & Tones", ngan_vi: "Luyện nói", ngan_en: "Speaking",
+      mo_ta_vi: "Bảng âm IPA, luyện thanh, từ, câu và nói chuyện cùng Trâu Con", mo_ta_en: "Sound chart (IPA), tones, words, sentences and talking with Trâu Con",
       url: "https://vietclass.cvcec.org/luyen-noi/", chiDuong: "^/luyen-noi(/|$)",
       mau: "#29B6E8", mau_dam: "#0A6E94", mau_nhat: "#DDF3FB", trau: "trau-pointing.png" },
     { id: "trienlam", ten_vi: "Triển lãm Em học tiếng Việt", ten_en: "Student Exhibition", ngan_vi: "Triển lãm", ngan_en: "Exhibition",
