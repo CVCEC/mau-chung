@@ -29,7 +29,7 @@
     { id: "vanhoa", ten_vi: "Văn hoá truyền thống", ten_en: "Traditional Culture", ngan_vi: "Văn hoá", ngan_en: "Culture",
       mo_ta_vi: "Lễ Tết, phong tục và đời sống Việt qua bài đọc và trò chơi", mo_ta_en: "Festivals, customs and Vietnamese life through readings and games",
       url: "https://baihoc.cvcec.org/?phan=van-hoa", phan: "van-hoa", duong: "^/bai-(8[1-9]|9[0-9]|1[0-9][0-9])(/|$)",
-      mau: "#A9774A", mau_dam: "#6F4A26", mau_nhat: "#F4E9DD", trau: "trau-flag.png" },
+      mau: "#A9774A", mau_dam: "#6F4A26", mau_nhat: "#F4E9DD", trau: "trau-wave.png" },
     { id: "khobau", ten_vi: "Kho báu ca dao, tục ngữ", ten_en: "Folk Sayings Treasure", ngan_vi: "Kho báu", ngan_en: "Sayings",
       mo_ta_vi: "Ca dao, tục ngữ, thành ngữ qua trò chơi", mo_ta_en: "Folk verses and proverbs through games",
       url: "https://khobau.cvcec.org/", mau: "#F5B730", mau_dam: "#8A6200", mau_nhat: "#FDF1D3", trau: "trau-peeking.png" },

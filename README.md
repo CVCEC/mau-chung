@@ -60,7 +60,7 @@ baihoc.cvcec.org chứa hai góc học: **Tiếng Việt cơ bản** (`id: "baih
 - `phan`: giá trị `?phan=` của trang mục lục (`tieng-viet` hoặc `van-hoa`);
 - `duong`: biểu thức chính quy cho đường dẫn bài thuộc góc đó (ví dụ `/bai-81/` thuộc `vanhoa`).
 
-`TTV.gocHienTai()` chọn theo `?phan=` trước, rồi theo `duong`, cuối cùng lấy mục đầu tiên của tên miền. Ảnh Trâu Con của Văn hoá truyền thống: `assets/trau-flag.png` (ảnh chính thức, chép từ cổng).
+`TTV.gocHienTai()` chọn theo `?phan=` trước, rồi theo `duong`, cuối cùng lấy mục đầu tiên của tên miền. Ảnh Trâu Con của Văn hoá truyền thống: `assets/trau-wave.png` (từ 16-11-2026 thôi dùng `trau-flag.png` vì trường không dùng hình cờ; tệp vẫn giữ trong `assets/`).
 
 ## Chỉ học qua cổng (từ 15-11-2026)
 
