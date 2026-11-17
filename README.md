@@ -51,7 +51,7 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 
 ## Góc học nằm trong cổng (từ 16-11-2026)
 
-Góc **Luyện nói** (`id: "luyennoi"`) nằm ngay trong cổng: https://vietclass.cvcec.org/luyen-noi/. Mục này có thêm `chiDuong: "^/luyen-noi(/|$)"`: một trang chỉ được coi là góc học khi đường dẫn khớp `chiDuong`. Nhờ vậy trang chủ, Học tập, Đăng nhập… của cổng (cùng tên miền) không bị coi là góc học và không bị che.
+Góc **Luyện nói – Luyện thanh** (`id: "luyennoi"`) nằm ngay trong cổng: https://vietclass.cvcec.org/luyen-noi/. Mục này có thêm `chiDuong: "^/luyen-noi(/|$)"`: một trang chỉ được coi là góc học khi đường dẫn khớp `chiDuong`. Nhờ vậy trang chủ, Học tập, Đăng nhập… của cổng (cùng tên miền) không bị coi là góc học và không bị che.
 
 ## Hai góc học chung một tên miền (từ 16-11-2026)
 
