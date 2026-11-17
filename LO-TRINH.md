@@ -42,11 +42,9 @@ Tổng số bài có ghi kết quả: Bậc 0: 72 · Bậc 1: 52 · Bậc 2: 131
 
 Chữ thường, không dấu, nối bằng gạch: `bai-12`, `on-tap-3` (baihoc, vanhoa) · `q1-b01` (vuihoc) · `bai-12` (nguphap) · `tn08`, `tg03`, `cd10` (khobau) · `t05` (cotich) · mã bài (hatca) · `lensau-3`, `lentam-12` (cuocsong) · mã trạm (vietnam) · mã món (venhaem).
 
-Các góc học **chưa gọi** `TTV.ghiKetQua`. Khi thêm, làm từng góc một, mỗi lần chơi xong một trò thì gọi một lần.
+Từ 17-11-2026, 10 góc đã gọi `TTV.ghiKetQua`: baihoc, vanhoa, vuihoc, nguphap, khobau, cotich, hatca, cuocsong, vietnam, venhaem. Luyện nói chạy trên máy nên không gửi. Mã `hoatDong` của từng góc ghi trong CLAUDE.md / README của kho đó.
 
-## Điều phát hiện khi rà các góc học (chưa sửa)
+## Điều phát hiện khi rà các góc học
 
-- khobautiengviet: gọi speechSynthesis trực tiếp. Theo quy tắc 7 mới, nên đổi sang `TTV.phat`.
-- venhaem: trò "Nói theo" hiện cách đọc kiểu tiếng Anh (`respellSyllable`), có thể trái quy tắc 5 ("không ghi cách đọc dưới chữ"). Cần chị quyết.
-- hatca: mới soạn 1/24 bài.
+- Đã sửa (17-11-2026): mọi góc đọc giọng máy qua bộ mẫu (`TTV.phat`); Về Nhà Em bỏ phiên âm kiểu tiếng Anh (quy tắc 5); Hát ca soạn đủ 24 bài (5 bài vè, dân ca được thay bằng bài dân gian khác cùng mã – xem README kho hatca; lời cần CVCEC soát trước khi thu âm).
 - truong-tieng-viet: không có Bài 122 (README của kho đã ghi).
