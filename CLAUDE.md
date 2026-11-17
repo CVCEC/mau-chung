@@ -15,6 +15,7 @@
 - truyencotich.cvcec.org – CVCEC/truyencotich
 - cuocsong.cvcec.org – CVCEC/baihoccuocsong
 - nguphap.cvcec.org – CVCEC/nguphap
+- hatca.cvcec.org – CVCEC/hatca
 - trienlam.cvcec.org – CVCEC/trien-lam-em-hoc-tieng-viet
 - mau.cvcec.org – CVCEC/mau-chung (bộ mẫu chung)
 
