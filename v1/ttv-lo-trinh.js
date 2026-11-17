@@ -204,7 +204,76 @@
   //   doi_tuong: nhóm hợp nhất (không bắt buộc; bỏ trống là mọi nhóm)
   // Cả góc chỉ có một bậc thì dùng ma: ".*".
   // ------------------------------------------------------------------
-  var NHAN_BAI = {};
+  // so_bai: số bài của luật (để tính phần trăm tiến độ của mỗi bậc).
+  // Mã bài là mã góc học gửi qua TTV.ghiKetQua (chữ thường, không dấu, gạch nối), ví dụ "bai-12", "q1-b01".
+  // Gắn nhãn ngày 17-11-2026 theo độ khó ngôn ngữ của bài (độ dài văn bản, cấu trúc câu, từ vựng),
+  // không theo chủ đề. Cập nhật khi góc học thêm bài.
+  var NHAN_BAI = {
+    // Tiếng Việt cơ bản – baihoc.cvcec.org (Bài 1–80, Ôn tập 1–12)
+    baihoc: [
+      { ma: "bai-([1-9]|[1-6][0-9]|70)", bac: 0, so_bai: 70, ky_nang: ["nghe", "doc", "viet"], chu_diem: "van" },
+      { ma: "on-tap-[12]", bac: 0, so_bai: 2, ky_nang: ["doc", "nghe"], chu_diem: "van" },
+      { ma: "on-tap-([3-9]|1[0-2])", bac: 1, so_bai: 10, ky_nang: ["doc", "nghe", "viet"] },
+      { ma: "bai-(7[1-9]|80)", bac: 2, so_bai: 10, ky_nang: ["doc"] }
+    ],
+    // Văn hoá truyền thống – baihoc.cvcec.org (Bài 81–145, không có Bài 122)
+    vanhoa: [
+      { ma: "bai-14[23]", bac: 1, so_bai: 2, ky_nang: ["nghe", "doc", "viet"], chu_diem: "am-chu-thanh" },
+      { ma: "bai-(138|145)", bac: 3, so_bai: 2, ky_nang: ["doc", "viet"] },
+      { ma: "bai-(8[1-9]|9[0-9]|1[0-3][0-9]|14[0-4])", bac: 2, so_bai: 60, ky_nang: ["doc"], chu_diem: "le-tet" }
+    ],
+    // Vui học tiếng Việt – Quyển 1 (20 bài), Quyển 2 (20 bài)
+    vuihoc: [
+      { ma: "q1-b(0[1-9]|1[0-9]|20)", bac: 1, so_bai: 20, ky_nang: ["nghe", "noi"], doi_tuong: ["5-8", "9-14"] },
+      { ma: "q2-b0[1-5]", bac: 1, so_bai: 5, ky_nang: ["noi", "doc", "viet"], doi_tuong: ["5-8", "9-14"] },
+      { ma: "q2-b(0[6-9]|1[0-9]|20)", bac: 2, so_bai: 15, ky_nang: ["noi", "doc", "viet"], doi_tuong: ["5-8", "9-14"] }
+    ],
+    // Ngữ pháp tiếng Việt – 37 bài (bai.html#bai-N); người mới học vào sau khoảng Bậc 2
+    nguphap: [
+      { ma: "bai-(8|10|11|12|31|32|33)", bac: 2, so_bai: 7, ky_nang: ["noi", "viet"] },
+      { ma: "bai-([1-4]|9|13|14|15|18|19|20|22|23|28|29|34|37)", bac: 3, so_bai: 17, ky_nang: ["viet", "noi"] },
+      { ma: "bai-(5|6|7|16|17|21|24|25|26|27|30|35|36)", bac: 4, so_bai: 13, ky_nang: ["doc", "viet"], chu_diem: "lap-luan" }
+    ],
+    // Kho báu ca dao, tục ngữ – 60 câu (tn = thành ngữ, tg = tục ngữ, cd = ca dao)
+    khobau: [
+      { ma: "tn(08|09|10|11|14)", bac: 2, so_bai: 5, ky_nang: ["doc"], chu_diem: "ca-dao-tuc-ngu" },
+      { ma: "cd(01|03|06|09|1[0-6]|19|20)", bac: 4, so_bai: 13, ky_nang: ["doc"], chu_diem: "ca-dao-tuc-ngu" },
+      { ma: "(tn|tg|cd)[0-9]{2}", bac: 3, so_bai: 42, ky_nang: ["doc"], chu_diem: "ca-dao-tuc-ngu" }
+    ],
+    // Truyện cổ tích – 30 truyện (mã t01–t30); truyền thuyết lịch sử nhiều Hán-Việt xếp Bậc 4
+    cotich: [
+      { ma: "t(04|05|08|11|17)", bac: 4, so_bai: 5, ky_nang: ["doc", "nghe"], chu_diem: "truyen-ke" },
+      { ma: "t(0[1-9]|[12][0-9]|30)", bac: 3, so_bai: 25, ky_nang: ["doc", "nghe", "viet"], chu_diem: "truyen-ke" }
+    ],
+    // Hát cùng Trâu Con – đồng dao (Bậc 1), vè (Bậc 2), dân ca và hát ru (Bậc 3)
+    hatca: [
+      { ma: "dung-dang-dung-de|chi-chi-chanh-chanh|keo-cua-lua-xe|nu-na-nu-nong|tap-tam-vong|rong-ran-len-may|tha-dia-ba-ba|lon-cau-vong|xia-ca-me|con-voi-con-voi|ba-cong-di-cho|ong-giang-ong-giang", bac: 1, so_bai: 12, ky_nang: ["nghe", "noi"], chu_diem: "tho-ca" },
+      { ma: "ve-[a-z-]+", bac: 2, so_bai: 4, ky_nang: ["nghe", "noi"], chu_diem: "tho-ca" },
+      { ma: "[a-z-]+", bac: 3, so_bai: 8, ky_nang: ["nghe"], chu_diem: "tho-ca" }
+    ],
+    // Bài học cuộc sống – Lên Sáu (18 bài, Bậc 3), Lên Tám (32 bài, Bậc 4)
+    cuocsong: [
+      { ma: "lensau-([1-9]|1[0-8])", bac: 3, so_bai: 18, ky_nang: ["nghe", "doc"], chu_diem: "dao-duc" },
+      { ma: "lentam-([1-9]|[12][0-9]|3[0-2])", bac: 4, so_bai: 32, ky_nang: ["doc", "viet"], chu_diem: "dao-duc" }
+    ],
+    // Khám phá Việt Nam – 31 trạm (mã trạm)
+    vietnam: [
+      { ma: "ban-gioc|mui-doi|hoi-an", bac: 1, so_bai: 3, ky_nang: ["nghe"], chu_diem: "so-dem-mau-sac" },
+      { ma: "hoang-sa|truong-sa|van-mieu|den-hung|thanh-nha-ho|my-son", bac: 3, so_bai: 6, ky_nang: ["nghe", "doc"], chu_diem: "que-huong" },
+      { ma: "[a-z-]+", bac: 2, so_bai: 22, ky_nang: ["nghe", "doc"], chu_diem: "que-huong" }
+    ],
+    // Về Nhà Em – 8 món (mã món)
+    venhaem: [
+      { ma: "[a-z-]+", bac: 2, so_bai: 8, ky_nang: ["nghe", "noi", "doc"], chu_diem: "mon-an" }
+    ],
+    // Luyện nói – Luyện thanh (cổng): chạy trên máy, không gửi kết quả; nhãn dùng để xếp chủ đề vào lộ trình
+    luyennoi: [
+      { ma: "luyen-thanh|bang-am", bac: 0, so_bai: 2, ky_nang: ["nghe", "noi"], chu_diem: "am-chu-thanh" },
+      { ma: "co-the-em|mau-sac|dem-so|do-choi|qua-ngon|cam-xuc|chao-hoi|gia-dinh|o-truong|con-vat", bac: 1, so_bai: 10, ky_nang: ["noi"] },
+      { ma: "do-an|thoi-tiet|so-thich|mot-ngay-cua-em|di-cho|ky-nghi-he", bac: 2, so_bai: 6, ky_nang: ["noi"] },
+      { ma: "[a-z-]+", bac: 3, so_bai: 8, ky_nang: ["noi"] }
+    ]
+  };
 
   function boDauMa(s) {
     return String(s == null ? "" : s).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D")
@@ -236,6 +305,20 @@
     return Object.keys(co).map(Number).sort();
   }
 
+  // Góc chạy hoàn toàn trên máy, không gửi kết quả: không tính vào tổng số bài của tiến độ
+  var KHONG_GHI_KET_QUA = ["luyennoi"];
+
+  // Tổng số bài đã gắn nhãn của mỗi bậc: { 0: n, 1: n, … } (cả nền tảng, hoặc một góc)
+  function soBaiTheoBac(goc) {
+    var kq = {};
+    Object.keys(NHAN_BAI).forEach(function (g) {
+      if (goc && g !== goc) return;
+      if (!goc && KHONG_GHI_KET_QUA.indexOf(g) >= 0) return;
+      NHAN_BAI[g].forEach(function (l) { kq[l.bac] = (kq[l.bac] || 0) + (l.so_bai || 0); });
+    });
+    return kq;
+  }
+
   var LO_TRINH = {
     phienBan: "2026-11-17",
     doiTuong: DOI_TUONG,
@@ -246,6 +329,7 @@
     timBac: bac,
     nhanCuaBai: nhanCuaBai,
     bacCuaGoc: bacCuaGoc,
+    soBaiTheoBac: soBaiTheoBac,
     maBai: boDauMa
   };
   window.TTV_LO_TRINH = LO_TRINH;
