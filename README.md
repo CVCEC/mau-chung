@@ -54,7 +54,7 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 Tạm dùng giọng máy của thiết bị khi chưa có tệp thu âm chuẩn. Trang không gọi speechSynthesis trực tiếp mà dùng:
 
 - `TTV.phat({ tep, chu })`: có tệp thì phát tệp; không có tệp, hoặc tệp lỗi, thì giọng máy đọc `chu`. Trả `Promise<boolean>`.
-- `TTV.giong.doc(chu, { toc: 0.85 })`: đọc bằng giọng máy (chậm, hiền). Máy chưa có giọng tiếng Việt thì hiện hướng dẫn cài (iPad, Android, Windows), mỗi trang một lần.
+- `TTV.giong.doc(chu, { toc: 0.85 })`: đọc bằng giọng máy (chậm, hiền). Câu tiếng Anh (lời hướng dẫn, giải nghĩa): `TTV.giong.doc(chu, { ngonNgu: "en" })`; máy không có giọng Anh thì im lặng. Máy chưa có giọng tiếng Việt thì hiện hướng dẫn cài (iPad, Android, Windows), mỗi trang một lần.
 - `TTV.giong.coGiongViet()`, `TTV.giong.dung()`, `TTV.giong.tenChuCai("b")` → "bờ" (đọc chữ cái theo âm).
 - Luôn gọi sau khi người học chạm (iPad chặn tự phát).
 

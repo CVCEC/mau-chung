@@ -474,12 +474,40 @@
     try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
     if (amDangPhat) { try { amDangPhat.pause(); } catch (e) {} amDangPhat = null; }
   }
-  // Đọc chữ tiếng Việt bằng giọng máy. tuyChon: { toc: 0.85 (chậm, hiền), baoThieu: true }
-  // Trả Promise<boolean>: true khi đọc xong, false khi không đọc được.
+  // Giọng máy tiếng Anh (lời hướng dẫn, giải nghĩa cho người mới học). Không có thì im lặng, không báo.
+  function timGiongAnh() {
+    try {
+      if (!window.speechSynthesis) return null;
+      var ds = window.speechSynthesis.getVoices() || [], tot = null;
+      for (var i = 0; i < ds.length; i++) {
+        var l = (ds[i].lang || "").toLowerCase().replace("_", "-");
+        if (l.indexOf("en") === 0 && (!tot || (l === "en-us" && tot.lang.toLowerCase().replace("_", "-") !== "en-us"))) tot = ds[i];
+      }
+      return tot;
+    } catch (e) { return null; }
+  }
+  function docTiengAnh(chu, tuyChon) {
+    return new Promise(function (xong) {
+      try {
+        if (!window.speechSynthesis) { xong(false); return; }
+        dungDoc();
+        var u = new SpeechSynthesisUtterance(chu);
+        u.lang = "en-US";
+        var g = timGiongAnh(); if (g) u.voice = g;
+        u.rate = typeof tuyChon.toc === "number" ? tuyChon.toc : 0.9;
+        u.onend = function () { xong(true); };
+        u.onerror = function () { xong(false); };
+        window.speechSynthesis.speak(u);
+      } catch (e) { xong(false); }
+    });
+  }
+  // Đọc chữ bằng giọng máy. tuyChon: { toc: 0.85 (chậm, hiền), baoThieu: true, ngonNgu: "vi" | "en" }
+  // Mặc định tiếng Việt. Trả Promise<boolean>: true khi đọc xong, false khi không đọc được.
   function docChu(chu, tuyChon) {
     tuyChon = tuyChon || {};
     chu = String(chu == null ? "" : chu).normalize("NFC").trim();
     if (!chu) return Promise.resolve(false);
+    if (tuyChon.ngonNgu === "en") return docTiengAnh(chu, tuyChon);
     return coGiongViet().then(function (co) {
       if (!co) { if (tuyChon.baoThieu !== false) baoThieuGiong(); return false; }
       return new Promise(function (xong) {
