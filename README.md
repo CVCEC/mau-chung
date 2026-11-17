@@ -43,7 +43,7 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 
 ## JavaScript
 
-- `window.TTV_DANH_SACH` – **nguồn duy nhất** của danh sách góc học (chỉ sửa trong `v1/cvcec-chung.js`). Thứ tự trong danh sách là **thứ tự lộ trình học** (từ 17-11-2026): xếp theo bậc thấp nhất rồi bậc trung bình của bài trong `ttv-lo-trinh.js`. Thanh tab và Làng học tập của cổng hiện theo thứ tự này. Thêm góc mới thì đặt đúng chỗ theo bậc.
+- `window.TTV_DANH_SACH` – **nguồn duy nhất** của danh sách góc học (chỉ sửa trong `v1/cvcec-chung.js`). Thứ tự (17-11-2026): các góc của **Làng học tập Trâu Con** (trẻ dưới 15 tuổi) trước, rồi các góc của **Lộ trình theo khung năng lực** (15+, có `nhom: "lo-trinh"`: Vui học, Về Nhà Em), Triển lãm cuối. Thanh tab và trang Học tập của cổng hiện theo thứ tự này.
 - `window.TTV_BAN_QUYEN` – dòng bản quyền.
 - `window.TTV`: `goc(id)`, `gocHienTai()`, `anh("trau-wave.png")`, `ngonNgu()`, `datNgonNgu("vi"|"en")`, `taoTheGoc(muc)`, `trangTriCanh()`.
 - Sự kiện `document` → `"ttv-ngon-ngu"` (`event.detail.ngonNgu`) khi bé bấm VI/EN.

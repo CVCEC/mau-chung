@@ -1,5 +1,7 @@
 # Lộ trình "Đường làng của Trâu Con"
 
+> **Cập nhật 17-11-2026 (chị Trang):** lộ trình theo bậc chỉ dành cho tab **"Lộ trình theo khung năng lực"** (15+) của cổng, xương sống là Vui học tiếng Việt Quyển 1–2, cùng Về Nhà Em. Làng học tập Trâu Con (trẻ dưới 15 tuổi) giữ nguyên, không hiện bậc. Nhãn bậc của các góc khác dưới đây vẫn giữ trong `ttv-lo-trinh.js` để tham khảo, không hiện cho trẻ. Xem mục "Lộ trình học" trong CLAUDE.md.
+
 Nguồn dữ liệu duy nhất: [`v1/ttv-lo-trinh.js`](v1/ttv-lo-trinh.js) (`window.TTV_LO_TRINH`). Tài liệu này chỉ tóm tắt cho người đọc. Muốn sửa thì sửa trong tệp đó.
 
 Lộ trình đối chiếu với Khung năng lực tiếng Việt dùng cho người nước ngoài 6 bậc (Thông tư 17/2015/TT-BGDĐT). Nền tảng dạy Sơ cấp và Trung cấp. Đây là lộ trình học, **không phải chứng chỉ**.
