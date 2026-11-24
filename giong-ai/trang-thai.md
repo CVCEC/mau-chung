@@ -2,6 +2,6 @@
 
 - Lần chạy gần nhất: 2026-11-24 08:41 UTC
 - Mô hình: gemini-3.1-flash-tts-preview · giọng Kore · miền Bắc
-- Đã có tiếng: **79 / 89** câu (lần này thêm 42, dùng 50 lượt gọi)
-- Câu Whisper nghe hơi khác chữ (cần nghe kỹ, xem kiem-tra.tsv): 45
+- Đã có tiếng: **81 / 89** câu (lần này thêm 44, dùng 51 lượt gọi)
+- Câu Whisper nghe hơi khác chữ (cần nghe kỹ, xem kiem-tra.tsv): 47
 - Câu bỏ qua theo yêu cầu (bo.txt): 0 · câu lỗi: 0
