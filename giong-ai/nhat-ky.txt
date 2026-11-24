@@ -59,3 +59,6 @@ Lô 1 câu – Gemini không trả tiếng: 400: {
 
 0.00  khờ  |  Hơ!
 0.00  ngờ  |  Ngô
+Lô 6 câu có 6 câu lệch nhiều – có thể cắt sai, chia đôi để đọc lại
+Lô 3 câu có 3 câu lệch nhiều – có thể cắt sai, chia đôi để đọc lại
+0.00  ngờ  |  NGƠ
