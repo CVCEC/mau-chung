@@ -24,3 +24,5 @@ Lô 3 câu – Gemini không trả tiếng: 400: {
 
 Lô 3 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
 0.00  e  |  Ê
+1.00  ê  |  Ê!
+1.00  gờ  |  Gờ
