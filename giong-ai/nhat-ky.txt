@@ -1,0 +1,10 @@
+1.00  Đúng rồi!  |  Đúng rồi!
+0.50  Giỏi lắm!  |  Rồi lắm!
+1.00  Tuyệt vời!  |  Tuyệt vời!
+1.00  Bạn làm được rồi!  |  Bạn làm được rồi!
+0.67  Thử lại nhé.  |  Thử lại nhá!
+0.83  Gần đúng rồi, thử lại nhé.  |  Gần đúng rồi, thử lại nhá!
+1.00  Bạn được một ngôi sao!  |  bạn được một ngôi sao.
+1.00  Bạn được hai ngôi sao!  |  bạn được hai ngôi sao.
+1.00  Bạn được ba ngôi sao!  |  Bạn được 3 ngôi sao.
+1.00  Bạn học xong bài này rồi. Giỏi quá!  |  Bạn học xong bài này rồi, giỏi quá!
