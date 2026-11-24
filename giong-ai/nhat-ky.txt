@@ -99,3 +99,8 @@ Lô 3 câu – Gemini không trả tiếng: không có tiếng trả về: {"can
 0.00  dấu hỏi  |  Dẫu hòi
 0.50  dấu ngã  |  Giấu ngã
 1.00  dấu nặng  |  dấu nặng
+Lô 11 câu có 6 câu lệch nhiều – có thể cắt sai, chia đôi để đọc lại
+Lô 5 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
+Lô 5 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
+0.00  không  |  HÔN
+1.00  một  |  Một
