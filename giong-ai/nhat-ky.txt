@@ -92,3 +92,10 @@ Lô 3 câu – Gemini không trả tiếng: không có tiếng trả về: {"can
 0.00  mả  |  Mà...
 1.00  mã  |  Mã...
 0.00  mạ  |  MÀ
+0.50  ma, mà, má, mả, mã, mạ  |  mà, mà, má, mã, mã, mã
+1.00  thanh ngang  |  Thanh ngang
+0.50  dấu huyền  |  Zô huyền
+0.50  dấu sắc  |  Zô sắc
+0.00  dấu hỏi  |  Dẫu hòi
+0.50  dấu ngã  |  Giấu ngã
+1.00  dấu nặng  |  dấu nặng
