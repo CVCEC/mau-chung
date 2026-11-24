@@ -1,26 +1,8 @@
-1.00  Đúng rồi!  |  Đúng rồi!
-0.50  Giỏi lắm!  |  Rồi lắm!
-1.00  Tuyệt vời!  |  Tuyệt vời!
-1.00  Bạn làm được rồi!  |  Bạn làm được rồi!
-0.67  Thử lại nhé.  |  Thử lại nhá!
-0.83  Gần đúng rồi, thử lại nhé.  |  Gần đúng rồi, thử lại nhá!
-1.00  Bạn được một ngôi sao!  |  bạn được một ngôi sao.
-1.00  Bạn được hai ngôi sao!  |  bạn được hai ngôi sao.
-1.00  Bạn được ba ngôi sao!  |  Bạn được 3 ngôi sao.
-1.00  Bạn học xong bài này rồi. Giỏi quá!  |  Bạn học xong bài này rồi, giỏi quá!
-Lô 15 câu: khoảng lặng chưa rõ, cắt theo mốc chữ của Whisper
-0.86  Chào các bạn! Mình là Trâu Con.  |  Chào các bạn! Mình là Châu Con!
-1.00  Hôm nay các bạn muốn học gì nào?  |  Hôm nay các bạn muốn học gì nào?
-0.67  Bắt đầu nào!  |  Bắt đầu now!
-1.00  Các bạn nghe rồi chọn đúng nhé.  |  Các bạn nghe rồi chọn đúng nhé!
-1.00  Các bạn nghe lại nhé.  |  Các bạn nghe lại nhé!
-1.00  Các bạn đọc theo mình nhé.  |  Các bạn đọc theo mình nhé!
-1.00  Các bạn chạm vào tranh nhé.  |  Các bạn chạm vào tranh nhé!
-1.00  Các bạn kéo thẻ vào đúng chỗ nhé.  |  Các bạn kéo thẻ vào đúng chỗ nhé!
-1.00  Các bạn nối từ với tranh nhé.  |  Các bạn nối từ với tranh nhé!
-1.00  Các bạn xếp các từ thành câu nhé.  |  Các bạn xếp các từ thành câu nhé!
-1.00  Các bạn nói cả câu nhé.  |  Các bạn nói cả câu nhé!
-0.86  Các bạn viết chữ vào ô nhé.  |  Các bạn viết chữ vào O nhé!
-1.00  Mình học tiếp nhé.  |  Mình học tiếp nhé!
-1.00  Các bạn nghỉ một chút rồi học tiếp nhé.  |  Các bạn nghỉ một chút rồi học tiếp nhé!
-1.00  Tạm biệt các bạn! Hẹn gặp lại nhé.  |  Tạm biệt các bạn, hẹn gặp lại nhé!
+Lô 20 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
+Lô 20 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
+Lô 10 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
+Lô 10 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
+Lô 5 câu: khoảng lặng chưa rõ, cắt theo mốc chữ của Whisper – không được
+Lô 5 câu không cắt được, chia đôi để đọc lại
+0.00  a  |  Á
+1.00  á  |  Á?
