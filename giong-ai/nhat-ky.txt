@@ -30,3 +30,6 @@ Lô 5 câu – Gemini không trả tiếng: không có tiếng trả về: {"can
 Lô 5 câu có 4 câu lệch nhiều – có thể cắt sai, chia đôi để đọc lại
 0.00  u  |  Ơ
 1.00  ư  |  Ư
+0.00  vờ  |  VÔ
+0.00  xờ  |  SỐ
+0.50  i dài  |  Ý dài
