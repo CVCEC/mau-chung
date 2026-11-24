@@ -83,3 +83,9 @@ Lô 1 câu – Gemini không trả tiếng: 400: {
 
 0.00  thờ  |  Thơ
 0.00  trờ  |  Chào!
+Lô 13 câu có 7 câu lệch nhiều – có thể cắt sai, chia đôi để đọc lại
+Lô 6 câu có 5 câu lệch nhiều – có thể cắt sai, chia đôi để đọc lại
+Lô 3 câu – Gemini không trả tiếng: không có tiếng trả về: {"candidates": [{"finishReason": "SAFETY", "index": 0, "finishMessage": "The audio stream could not be completed. Please retry your reque
+0.00  ma  |  Má
+1.00  mà  |  MÀ
+1.00  má  |  Má?
