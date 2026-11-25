@@ -51,6 +51,8 @@ phông `--ttv-phong` (Nunito), `--ttv-phong-tieu-de` (Baloo 2), `--ttv-phong-tap
 
 ## Giọng đọc (từ 17-11-2026)
 
+**Giọng chuẩn của Trâu Con (từ 25-11-2026):** giọng AI **Kore** (Google Gemini, miền Bắc), dùng chung cho mọi góc học. Mỗi kho có robot giọng đọc AI (`tools/giong_ai.py`, `giong-ai/`) tạo tệp mp3 mỗi ngày; bản thu giọng người thật đặt đè lên tệp AI thì robot không ghi đè. Mã API dùng chung khoảng 100 lượt/ngày nên mỗi kho có trần `TOI_DA_LUOT` trong `giong-ai/chay.txt`. Các công cụ `studio.html` tạo giọng "Elio" cũ đã ngừng dùng; 50 video của Bài học cuộc sống vẫn giọng Elio cho tới khi dựng lại.
+
 Tạm dùng giọng máy của thiết bị khi chưa có tệp thu âm chuẩn. Trang không gọi speechSynthesis trực tiếp mà dùng:
 
 - `TTV.phat({ tep, chu })`: có tệp thì phát tệp; không có tệp, hoặc tệp lỗi, thì giọng máy đọc `chu`. Trả `Promise<boolean>`.
