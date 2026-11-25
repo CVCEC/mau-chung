@@ -5,3 +5,6 @@ Lô 3 câu có 3 câu lệch nhiều – có thể cắt sai, chia đôi để �
 0.00  năm  |  NAMM
 0.00  sáu  |  Chào!
 0.00  bảy  |  Bye!
+0.00  tám  |  Tạm!
+1.00  chín  |  Chín
+1.00  mười  |  Mười
