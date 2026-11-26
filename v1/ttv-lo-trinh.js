@@ -256,7 +256,9 @@
     vuihoc: [
       { ma: "q1-b(0[1-9]|1[0-9]|20)", bac: 1, so_bai: 20, ky_nang: ["nghe", "noi"], doi_tuong: ["5-8", "9-14"] },
       { ma: "q2-b0[1-5]", bac: 1, so_bai: 5, ky_nang: ["noi", "doc", "viet"], doi_tuong: ["5-8", "9-14"] },
-      { ma: "q2-b(0[6-9]|1[0-9]|20)", bac: 2, so_bai: 15, ky_nang: ["noi", "doc", "viet"], doi_tuong: ["5-8", "9-14"] }
+      { ma: "q2-b(0[6-9]|1[0-9]|20)", bac: 2, so_bai: 15, ky_nang: ["noi", "doc", "viet"], doi_tuong: ["5-8", "9-14"] },
+      // Vui học nâng cao (CVCEC biên soạn, trung-cap/bai-NN/, mã tc-bNN) – thêm 26-11-2026; nâng so_bai khi có bài mới
+      { ma: "tc-b01", bac: 3, so_bai: 1, ky_nang: ["nghe", "noi", "doc", "viet"], chu_diem: "le-tet", doi_tuong: ["nguoi-lon"] }
     ],
     // Ngữ pháp tiếng Việt – 37 bài (bai.html#bai-N); người mới học vào sau khoảng Bậc 2
     nguphap: [
