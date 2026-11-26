@@ -6,7 +6,7 @@
  * NGUỒN DUY NHẤT của: các bậc, danh sách "Mình làm được…", chủ điểm, và nhãn bậc của từng bài
  * trong các góc học. Đối chiếu Khung năng lực tiếng Việt dùng cho người nước ngoài 6 bậc
  * (Thông tư 17/2015/TT-BGDĐT). Câu "làm được" là DIỄN GIẢI cho người học, không trích nguyên văn.
- * Nền tảng theo Sơ cấp (Bậc 1–2) và Trung cấp (Bậc 3–4); Bậc 0 "Làm quen" là chặng riêng của
+ * Nền tảng theo Sơ cấp (Bậc 1–2), Trung cấp (Bậc 3–4) và Cao cấp (Bậc 5, thêm 26-11-2026); Bậc 0 "Làm quen" là chặng riêng của
  * trường (không thuộc Khung). Đây là lộ trình học, KHÔNG phải chứng chỉ.
  *
  * v1 chỉ sửa không phá vỡ: thêm bậc, chủ điểm, nhãn thì được; không đổi hay xoá mã đã có.
@@ -162,6 +162,33 @@
           ["Mình viết được bài so sánh, nêu ưu nhược điểm.", "I can write texts comparing options with pros and cons."]
         ]
       }
+    },
+    {
+      // Thêm 26-11-2026 (CVCEC đồng ý mở rộng lộ trình lên Cao cấp). Bài Bậc 5 do CVCEC biên soạn (đang soạn).
+      bac: 5, ma: "B5", cap: "cao-cap", khung: 5,
+      chang_vi: "Văn Miếu", chang_en: "Temple of Literature",
+      ten_vi: "Cao cấp – Bậc 5", ten_en: "Advanced – Level 5",
+      mo_ta_vi: "Hiểu văn bản dài, khó, nhận ra hàm ý; diễn đạt trôi chảy, linh hoạt trong học tập và công việc; viết bài chặt chẽ, đúng văn phong.",
+      mo_ta_en: "Understand long, demanding texts and implied meaning; express yourself fluently and flexibly for study and work; write well-structured texts in the right style.",
+      lam_duoc: {
+        nghe: [
+          ["Mình hiểu bài nói dài, kể cả khi ý không nói thẳng ra.", "I understand extended speech, even when ideas are not stated directly."],
+          ["Mình theo dõi được bản tin, phim, chương trình truyền hình mà không mấy khó khăn.", "I can follow the news, films and TV programmes without much effort."]
+        ],
+        noi: [
+          ["Mình nói trôi chảy, tự nhiên, ít khi phải dừng lại tìm từ.", "I speak fluently and naturally, rarely stopping to search for words."],
+          ["Mình dùng tiếng Việt linh hoạt trong học tập, công việc và giao tiếp xã hội.", "I use Vietnamese flexibly for study, work and social life."],
+          ["Mình trình bày rõ ràng một vấn đề phức tạp, có dẫn chứng.", "I can present a complex topic clearly, with supporting examples."]
+        ],
+        doc: [
+          ["Mình đọc hiểu văn bản dài, phức tạp, kể cả tác phẩm văn học.", "I can read long, complex texts, including literary works."],
+          ["Mình nhận ra phong cách, thái độ và hàm ý của người viết.", "I can recognise the writer's style, attitude and implied meaning."]
+        ],
+        viet: [
+          ["Mình viết được bài rõ ràng, chặt chẽ về chủ đề phức tạp.", "I can write clear, well-structured texts on complex topics."],
+          ["Mình chọn được văn phong hợp với người đọc: thư trang trọng, báo cáo, bài luận.", "I can choose a style that suits the reader: formal letters, reports, essays."]
+        ]
+      }
     }
   ];
 
@@ -191,7 +218,10 @@
     { id: "dao-duc", bac: 3, vi: "Cách cư xử, bài học cuộc sống", en: "Manners and life lessons" },
     { id: "tho-ca", bac: 3, vi: "Thơ, đồng dao, dân ca", en: "Poems, chants and folk songs" },
     { id: "xa-hoi", bac: 4, vi: "Xã hội, môi trường, công nghệ", en: "Society, environment and technology" },
-    { id: "lap-luan", bac: 4, vi: "So sánh, nêu ý kiến, lập luận", en: "Comparing, opinions and arguing" }
+    { id: "lap-luan", bac: 4, vi: "So sánh, nêu ý kiến, lập luận", en: "Comparing, opinions and arguing" },
+    { id: "van-hoc", bac: 5, vi: "Văn học, nghệ thuật", en: "Literature and the arts" },
+    { id: "lich-su", bac: 5, vi: "Lịch sử, truyền thống", en: "History and heritage" },
+    { id: "cong-viec", bac: 5, vi: "Học tập, công việc, giao tiếp trang trọng", en: "Study, work and formal communication" }
   ];
 
   // ------------------------------------------------------------------
@@ -320,7 +350,7 @@
   }
 
   var LO_TRINH = {
-    phienBan: "2026-11-17",
+    phienBan: "2026-11-26",
     doiTuong: DOI_TUONG,
     kyNang: KY_NANG,
     bac: BAC,

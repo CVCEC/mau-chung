@@ -4,7 +4,7 @@
 
 Nguồn dữ liệu duy nhất: [`v1/ttv-lo-trinh.js`](v1/ttv-lo-trinh.js) (`window.TTV_LO_TRINH`). Tài liệu này chỉ tóm tắt cho người đọc. Muốn sửa thì sửa trong tệp đó.
 
-Lộ trình đối chiếu với Khung năng lực tiếng Việt dùng cho người nước ngoài 6 bậc (Thông tư 17/2015/TT-BGDĐT). Nền tảng dạy Sơ cấp và Trung cấp. Đây là lộ trình học, **không phải chứng chỉ**.
+Lộ trình đối chiếu với Khung năng lực tiếng Việt dùng cho người nước ngoài 6 bậc (Thông tư 17/2015/TT-BGDĐT). Nền tảng dạy Sơ cấp, Trung cấp và (từ 26-11-2026) Cao cấp Bậc 5. Đây là lộ trình học, **không phải chứng chỉ**.
 
 | Chặng | Bậc | Cấp | Bé / người học làm được |
 |---|---|---|---|
@@ -13,6 +13,9 @@ Lộ trình đối chiếu với Khung năng lực tiếng Việt dùng cho ngư
 | Chợ quê | 2 | Sơ cấp | Mua bán, hỏi đường, thời gian, thời tiết, món ăn, sở thích |
 | Trường làng | 3 | Trung cấp | Kể chuyện, nêu ý kiến và lý do; đọc truyện, văn hoá; viết đoạn văn |
 | Lên phố | 4 | Trung cấp | Văn bản phức tạp, trừu tượng; so sánh, lập luận |
+| Văn Miếu | 5 | Cao cấp (thêm 26-11-2026) | Văn bản dài, khó, hàm ý; nói trôi chảy trong học tập, công việc; viết chặt chẽ, đúng văn phong |
+
+Từ 26-11-2026 (CVCEC đồng ý): tab Lộ trình của cổng hiện "Học ở đâu" (Vui học, Về Nhà Em) và "Học thêm ở Làng học tập" (mọi góc khác có nhãn bậc, trừ Triển lãm); sổ 15+ của Góc học tập tính cả các bài này. Bài mới Bậc 3–5 do CVCEC biên soạn: soạn mẫu, duyệt rồi mới làm tiếp.
 
 Mỗi bậc có câu "Mình làm được…" cho 4 kỹ năng Nghe, Nói, Đọc, Viết (VI/EN). Nhóm người học dùng chung mã với tab Hoạt động của cổng: `5-8`, `9-14`, `nguoi-lon`.
 
