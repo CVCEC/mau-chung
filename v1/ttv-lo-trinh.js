@@ -351,6 +351,51 @@
     return kq;
   }
 
+  // ------------------------------------------------------------------
+  // MẢNG NGÔN NGỮ (từ 26-11-2026): dùng cho phần phân tích của "Góc học tập của em".
+  // Cùng mã với "mang" trong kết quả từng câu (TTV.ghiKetQua({ …, cau: [...] })).
+  // ------------------------------------------------------------------
+  var MANG = [
+    { id: "am-chu", vi: "Âm, vần, thanh và chữ", en: "Sounds, tones and letters" },
+    { id: "tu-vung", vi: "Từ vựng", en: "Vocabulary" },
+    { id: "ngu-phap", vi: "Ngữ pháp", en: "Grammar" },
+    { id: "doc-hieu", vi: "Đọc hiểu", en: "Reading comprehension" },
+    { id: "nghe-hieu", vi: "Nghe hiểu", en: "Listening comprehension" },
+    { id: "viet", vi: "Viết và chính tả", en: "Writing and spelling" },
+    { id: "van-hoa", vi: "Văn hoá, thành ngữ, ca dao", en: "Culture, idioms and folk verse" },
+    { id: "noi", vi: "Nói", en: "Speaking" }
+  ];
+  // Loại lỗi của một câu sai (mã "loi" trong kết quả từng câu)
+  var LOAI_LOI = [
+    { id: "dau-thanh", vi: "Dấu thanh (sắc, huyền, hỏi, ngã, nặng)", en: "Tone marks" },
+    { id: "dau-chu", vi: "Dấu chữ (ă, â, ê, ô, ơ, ư, đ)", en: "Letter diacritics (ă, â, ê, ô, ơ, ư, đ)" },
+    { id: "chinh-ta", vi: "Chính tả", en: "Spelling" },
+    { id: "am-van", vi: "Âm đầu, vần", en: "Initial sounds and rhymes" },
+    { id: "nghia", vi: "Nghĩa của từ", en: "Word meaning" },
+    { id: "trat-tu", vi: "Trật tự từ trong câu", en: "Word order" },
+    { id: "ngu-phap", vi: "Ngữ pháp (loại từ, hư từ…)", en: "Grammar (classifiers, function words…)" },
+    { id: "khac", vi: "Lỗi khác", en: "Other" }
+  ];
+  // Mảng chính của từng trò (hoatDong) trong mỗi góc học. Đọc từ trên xuống, luật đầu tiên khớp được dùng.
+  //   hd: biểu thức chính quy khớp mã trò (đã qua maBai/boDauMa), mang: mã trong MANG.
+  // Kết quả từng câu có "mang" riêng thì dùng "mang" của câu.
+  var MANG_HOAT_DONG = {
+    // __MANG_HOAT_DONG__
+  };
+  function mangCuaHoatDong(goc, hoatDong) {
+    var luat = MANG_HOAT_DONG[goc];
+    if (!luat) return null;
+    var ma = boDauMa(hoatDong);
+    for (var i = 0; i < luat.length; i++) {
+      try { if (new RegExp("^(?:" + luat[i].hd + ")$").test(ma)) return luat[i].mang; } catch (e) {}
+    }
+    return null;
+  }
+  function timMang(id) {
+    for (var i = 0; i < MANG.length; i++) if (MANG[i].id === id) return MANG[i];
+    return null;
+  }
+
   var LO_TRINH = {
     phienBan: "2026-11-26",
     doiTuong: DOI_TUONG,
@@ -362,7 +407,12 @@
     nhanCuaBai: nhanCuaBai,
     bacCuaGoc: bacCuaGoc,
     soBaiTheoBac: soBaiTheoBac,
-    maBai: boDauMa
+    maBai: boDauMa,
+    mang: MANG,
+    loaiLoi: LOAI_LOI,
+    mangHoatDong: MANG_HOAT_DONG,
+    mangCuaHoatDong: mangCuaHoatDong,
+    timMang: timMang
   };
   window.TTV_LO_TRINH = LO_TRINH;
 })();

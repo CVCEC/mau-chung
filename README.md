@@ -72,6 +72,33 @@ TTV.ghiKetQua({ bai: "bai-12", hoatDong: "g3", soTroChoi: 11, diem: 8, diemToiDa
 
 Bộ mẫu gửi kết quả lên cổng, chỉ tới vietclass.cvcec.org. Cổng ghi vào tài khoản của người học. Khách học thử, hoặc trang không nằm trong cổng, thì không gửi gì (hàm trả `false`). Góc học không tự ghi vào Firebase và không cần khoá localStorage mới. Mã bài: xem [`LO-TRINH.md`](LO-TRINH.md).
 
+## Ghi kết quả từng câu (từ 26-11-2026, không bắt buộc)
+
+Để "Góc học tập của em" phân tích từ vựng, ngữ pháp, chính tả, viết…, góc học gửi thêm `cau` (tối đa 40 câu một lượt) trong cùng lần gọi `TTV.ghiKetQua`:
+
+```js
+TTV.ghiKetQua({
+  bai: "bai-12", hoatDong: "g3", soTroChoi: 11, diem: 8, diemToiDa: 10, sao: 2, thoiGianGiay: 95,
+  cau: [
+    { tu: "con mèo", dung: true, mang: "tu-vung" },
+    { ma: "c4", tu: "Em đi học.", dung: false, mang: "ngu-phap", loi: "trat-tu" },
+    { tu: "quả cam", dung: false, mang: "viet", loi: TTV.loaiLoi("quả cam", traLoiCuaBe) }
+  ]
+});
+```
+
+| Trường | Ý nghĩa |
+|---|---|
+| `ma` | Mã câu trong dữ liệu bài (bỏ trống thì bộ mẫu lấy từ `tu`). Mỗi câu một mã cố định qua các lần chơi. |
+| `tu` | Từ / cụm từ / câu **đích** lấy từ dữ liệu bài, tối đa 30 ký tự. **Không bao giờ** đưa chữ người học gõ hay nói vào đây (bảo vệ dữ liệu trẻ em). |
+| `dung` | `true` nếu người học trả lời đúng **ngay lần đầu** của câu đó trong lượt này. |
+| `mang` | Mảng ngôn ngữ: `am-chu`, `tu-vung`, `ngu-phap`, `doc-hieu`, `nghe-hieu`, `viet`, `van-hoa`, `noi`. Bỏ trống thì cổng dùng mảng của trò (`TTV_LO_TRINH.mangCuaHoatDong`). |
+| `loi` | Chỉ khi sai: `dau-thanh`, `dau-chu`, `chinh-ta`, `am-van`, `nghia`, `trat-tu`, `ngu-phap`, `khac`. |
+
+`TTV.loaiLoi(dapAn, traLoi)` tự đoán lỗi khi so chữ: chỉ khác dấu thanh → `dau-thanh`; khác dấu chữ (ă â ê ô ơ ư đ) → `dau-chu`; đủ từ nhưng sai thứ tự → `trat-tu`; còn lại → `null` (góc học tự chọn mã, hoặc bỏ trống). Câu trả lời của người học chỉ dùng để so trên máy, không gửi đi.
+
+Mã không hợp lệ bị bỏ qua; thiếu `cau` thì cổng vẫn ghi lượt như trước. Cổng lưu thống kê từng câu ở `users/{uid}/hoSo/chinh/chiTiet/{goc__bai}` (số lần gặp, số lần đúng, những ngày đúng) bằng một lần ghi riêng, nên lỗi ở phần này không bao giờ làm mất sao.
+
 ## Lộ trình học (từ 17-11-2026)
 
 `<script src="https://mau.cvcec.org/v1/ttv-lo-trinh.js" defer></script>` → `window.TTV_LO_TRINH`: các bậc (0–4), câu "Mình làm được…", chủ điểm, nhãn bậc của từng bài, `nhanCuaBai(goc, maBai)`, `soBaiTheoBac()`. Tóm tắt: [`LO-TRINH.md`](LO-TRINH.md).

@@ -623,7 +623,53 @@
     if (!isFinite(v)) v = tu;
     return Math.max(tu, Math.min(den, v));
   }
-  // kq: { bai, hoatDong, soTroChoi, diem, diemToiDa, sao (0–3), thoiGianGiay, xong (true khi chơi hết trò) }
+  // KẾT QUẢ TỪNG CÂU (từ 26-11-2026, không bắt buộc): kq.cau = [{ ma, tu, dung, mang, loi }, …]
+  // để Góc học tập phân tích từ vựng, ngữ pháp, chính tả… Xem README, mục "Ghi kết quả từng câu".
+  //   ma  : mã câu trong dữ liệu bài (bỏ trống thì lấy từ tu)
+  //   tu  : từ/cụm từ ĐÍCH lấy từ dữ liệu bài (tối đa 30 ký tự). KHÔNG BAO GIỜ đưa chữ người học gõ vào đây.
+  //   dung: true/false
+  //   mang: một mã trong MANG_CAU; loi: một mã trong LOI_CAU (chỉ khi sai), có thể lấy từ TTV.loaiLoi()
+  var MANG_CAU = ["am-chu", "tu-vung", "ngu-phap", "doc-hieu", "nghe-hieu", "viet", "van-hoa", "noi"];
+  var LOI_CAU = ["dau-thanh", "dau-chu", "chinh-ta", "am-van", "nghia", "trat-tu", "ngu-phap", "khac"];
+  var TOI_DA_CAU = 40;
+  function lamSachCau(ds) {
+    if (!ds || typeof ds.length !== "number") return null;
+    var kq = [];
+    for (var i = 0; i < ds.length && kq.length < TOI_DA_CAU; i++) {
+      var c = ds[i] || {}, tu = null;
+      if (c.tu != null) {
+        tu = String(c.tu).normalize("NFC").replace(/\s+/g, " ").trim().slice(0, 30);
+        if (!tu) tu = null;
+      }
+      var ma = maSach(c.ma != null && c.ma !== "" ? c.ma : tu, 40);
+      if (!ma) continue;
+      var m = { ma: ma, dung: c.dung === true };
+      if (tu) m.tu = tu;
+      if (MANG_CAU.indexOf(c.mang) >= 0) m.mang = c.mang;
+      if (!m.dung && LOI_CAU.indexOf(c.loi) >= 0) m.loi = c.loi;
+      kq.push(m);
+    }
+    return kq.length ? kq : null;
+  }
+  // Đoán loại lỗi khi so đáp án với câu trả lời (chữ): "dau-thanh" (chỉ sai dấu thanh),
+  // "dau-chu" (sai dấu chữ ă â ê ô ơ ư đ), "trat-tu" (đủ từ nhưng sai thứ tự); không đoán được thì null.
+  function chuanChu(s) {
+    return String(s == null ? "" : s).normalize("NFC").toLowerCase()
+      .replace(/[.,!?;:"'“”‘’()…–-]/g, " ").replace(/\s+/g, " ").trim();
+  }
+  function boThanh(s) { return s.normalize("NFD").replace(/[\u0300\u0301\u0303\u0309\u0323]/g, "").normalize("NFC"); }
+  function boHetDau(s) { return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d"); }
+  function loaiLoi(dapAn, traLoi) {
+    var a = chuanChu(dapAn), b = chuanChu(traLoi);
+    if (!a || !b || a === b) return null;
+    if (boThanh(a) === boThanh(b)) return "dau-thanh";
+    if (boHetDau(a) === boHetDau(b)) return "dau-chu";
+    var ta = a.split(" ").sort().join(" "), tb = b.split(" ").sort().join(" ");
+    if (a.indexOf(" ") > 0 && ta === tb) return "trat-tu";
+    return null;
+  }
+
+  // kq: { bai, hoatDong, soTroChoi, diem, diemToiDa, sao (0–3), thoiGianGiay, xong (true khi chơi hết trò), cau (không bắt buộc) }
   function ghiKetQua(kq) {
     kq = kq || {};
     var muc = gocHienTai();
@@ -643,6 +689,8 @@
       thoiGianGiay: soNguyen(kq.thoiGianGiay, 0, 7200),
       ketQua: kq.xong === false ? "chua-xong" : "hoan-thanh"
     };
+    var cau = lamSachCau(kq.cau);
+    if (cau) tin.cau = cau;
     try { window.parent.postMessage(tin, CONG); return true; } catch (e) { return false; }
   }
 
@@ -651,6 +699,7 @@
     giong: { coGiongViet: coGiongViet, doc: docChu, phat: phat, dung: dungDoc, tenChuCai: tenChuCai, moKhoa: moKhoaGiong },
     phat: phat,           // TTV.phat({ tep, chu }) – như README; TTV.giong.phat là cùng một hàm
     ghiKetQua: ghiKetQua,
+    loaiLoi: loaiLoi,
     danhSach: TTV_DANH_SACH,
     banQuyen: TTV_BAN_QUYEN,
     goc: function (id) {
