@@ -15,7 +15,7 @@ Lộ trình đối chiếu với Khung năng lực tiếng Việt dùng cho ngư
 | Lên phố | 4 | Trung cấp | Văn bản phức tạp, trừu tượng; so sánh, lập luận |
 | Văn Miếu | 5 | Cao cấp (thêm 26-11-2026) | Văn bản dài, khó, hàm ý; nói trôi chảy trong học tập, công việc; viết chặt chẽ, đúng văn phong |
 
-Từ 26-11-2026 (CVCEC đồng ý): tab Lộ trình của cổng hiện "Học ở đâu" (Vui học, Về Nhà Em) và "Học thêm ở Làng học tập" (mọi góc khác có nhãn bậc, trừ Triển lãm); sổ 15+ của Góc học tập tính cả các bài này. Bài mới Bậc 3–5 do CVCEC biên soạn: soạn mẫu, duyệt rồi mới làm tiếp.
+Lộ trình 15+ chỉ gồm Vui học tiếng Việt, thực hành Về Nhà Em và các bài CVCEC phát triển mới (ngữ pháp, viết văn, viết thơ vè, luyện nghe) đến Bậc 5; không trộn bài của các góc Làng học tập (CVCEC nhắc 26-11-2026). Bài mới: soạn mẫu, duyệt rồi mới làm tiếp. Nhãn bậc của các góc Làng bên dưới chỉ để tham khảo nội bộ, không hiện ở tab Lộ trình.
 
 Mỗi bậc có câu "Mình làm được…" cho 4 kỹ năng Nghe, Nói, Đọc, Viết (VI/EN). Nhóm người học dùng chung mã với tab Hoạt động của cổng: `5-8`, `9-14`, `nguoi-lon`.
 
