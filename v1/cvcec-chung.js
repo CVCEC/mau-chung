@@ -31,7 +31,7 @@
       mau: "#A9774A", mau_dam: "#6F4A26", mau_nhat: "#F4E9DD", trau: "trau-wave.png" },
     { id: "nguphap", ten_vi: "Ngữ pháp tiếng Việt", ten_en: "Vietnamese Grammar", ngan_vi: "Ngữ pháp", ngan_en: "Grammar",
       mo_ta_vi: "Từ, cụm từ, câu và hội thoại: 37 bài nâng cao", mo_ta_en: "Words, phrases, sentences and conversation: 37 advanced lessons",
-      url: "https://nguphap.cvcec.org/", mau: "#5868D0", mau_dam: "#2F3D96", mau_nhat: "#E6E9FA", trau: "trau-thinking.png" },
+      url: "https://nguphap.cvcec.org/", mau: "#5868D0", mau_dam: "#2F3D96", mau_nhat: "#E6E9FA", trau: "trau-flag.png" },
     { id: "vietnam", ten_vi: "Khám phá Việt Nam", ten_en: "Explore Vietnam", ngan_vi: "Bản đồ", ngan_en: "Map",
       mo_ta_vi: "Đi khắp Việt Nam theo bản đồ, sưu tầm sao vàng", mo_ta_en: "Travel Vietnam on the map and collect gold stars",
       url: "https://vietnam.cvcec.org/", mau: "#22B0A3", mau_dam: "#0B6F66", mau_nhat: "#DDF4F1", trau: "trau-hiking.png" },
